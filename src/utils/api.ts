@@ -9,8 +9,8 @@ import type {
 
 /** MicroCMSのAPIを使用するためのクライアントを生成する */
 const client = createClient({
-    serviceDomain: import.meta.env.PUBLIC_MICROCMS_SERVICE_DOMAIN, // MicroCMSのサービスドメインを指定する
-    apiKey: import.meta.env.PUBLIC_MICROCMS_API_KEY, // MicroCMSのAPIキーを指定する
+    serviceDomain: import.meta.env.MICROCMS_SERVICE_DOMAIN, // MicroCMSのサービスドメインを指定する
+    apiKey: import.meta.env.MICROCMS_API_KEY, // MicroCMSのAPIキーを指定する
 });
 
 /** 汎用ジェネリック関数 */
