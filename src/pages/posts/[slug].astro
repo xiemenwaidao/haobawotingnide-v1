@@ -3,15 +3,17 @@ import Posts from "@layouts/Posts.astro";
 import PostDetails from "@layouts/PostDetails.astro";
 import getPageNumbers from "@utils/getPageNumbers";
 import { SITE } from "@config";
-import { getAllBlogs } from "@utils/api";
 import type { Blog } from "types/microcms";
+import { MicroCMSUtils, microcmsFactory } from "@utils/microcms";
 
 export interface Props {
     post: Blog;
 }
 
 export async function getStaticPaths() {
-    const blogResponse = await getAllBlogs();
+    const blogResponse = await MicroCMSUtils.getAllContents({
+        getListFn: microcmsFactory.blogs.getList,
+    });
     const blogs = blogResponse.contents;
 
     const postResult = blogs.map(blog => ({
@@ -23,15 +25,15 @@ export async function getStaticPaths() {
         params: { slug: String(pageNum) },
     }));
 
-    // console.log({ pagePaths });
-
     return [...postResult, ...pagePaths];
 }
 
 const { slug } = Astro.params;
 const { post } = Astro.props;
 
-const blogResponse = await getAllBlogs();
+const blogResponse = await MicroCMSUtils.getAllContents({
+    getListFn: microcmsFactory.blogs.getList,
+});
 const blogs = blogResponse.contents;
 
 const totalPages = getPageNumbers(blogResponse.totalCount);

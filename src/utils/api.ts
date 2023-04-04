@@ -13,7 +13,7 @@ const client = createClient({
     apiKey: import.meta.env.MICROCMS_API_KEY, // MicroCMSのAPIキーを指定する
 });
 
-/** 汎用ジェネリック関数 */
+/** 汎用ジェネリック関数(いらんかも^^) */
 export const getContents = async <T extends Contents>(
     endpoint: EndPoint,
     queries?: MicroCMSQueries
@@ -35,7 +35,18 @@ export const getBlogs = async (queries?: MicroCMSQueries) => {
 
 /** ブログ記事一覧を取得する関数 */
 export const getAllBlogs = async () => {
-    return await getContents<Blog>("blogs");
+    return await getContents<Blog>("blogs", {
+        limit: 1000,
+        fields: [
+            "id",
+            "publishedAt",
+            "title",
+            "description",
+            "content",
+            "tag",
+            "eyecatch",
+        ],
+    });
 };
 
 /** 最新3件の記事を取得 */
@@ -46,7 +57,10 @@ export const getLatestBlogs = async () => {
 
 /** タグIDで記事を絞り込み取得 */
 export const getTagBlogs = async (id: string) => {
-    const queries: MicroCMSQueries = { filters: `tag[contains]${id}` };
+    const queries: MicroCMSQueries = {
+        limit: 1000,
+        filters: `tag[contains]${id}`,
+    };
     return await getContents<Blog>("blogs", queries);
 };
 
@@ -73,5 +87,5 @@ export const getTags = async (queries?: MicroCMSQueries) => {
 
 /** 全タグ取得 */
 export const getAllTags = async () => {
-    return await getContents<Tag>("tags");
+    return await getContents<Tag>("tags", { limit: 1000 });
 };
