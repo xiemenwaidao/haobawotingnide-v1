@@ -7,9 +7,12 @@ import Hr from "@components/Hr.astro";
 import Card from "@components/Card";
 import Socials from "@components/Socials.astro";
 import { SOCIALS } from "@config";
-import { getLatestBlogs } from "@utils/api";
+import { MicroCMSUtils, microcmsFactory } from "@utils/microcms";
 
-const blogResponse = await getLatestBlogs();
+const blogResponse = await MicroCMSUtils.getContents({
+    getListFn: microcmsFactory.blogs.getLatestList,
+    limit: 3,
+});
 
 const socialCount = SOCIALS.filter(social => social.active).length;
 ---

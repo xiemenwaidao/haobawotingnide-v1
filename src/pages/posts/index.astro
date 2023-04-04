@@ -3,9 +3,11 @@ import { SITE } from "@config";
 import Posts from "@layouts/Posts.astro";
 import getPageNumbers from "@utils/getPageNumbers";
 
-import { getAllBlogs } from "@utils/api";
+import { MicroCMSUtils, microcmsFactory } from "@utils/microcms";
 
-const blogResponse = await getAllBlogs();
+const blogResponse = await MicroCMSUtils.getAllContents({
+    getListFn: microcmsFactory.blogs.getList,
+});
 const blogs = blogResponse.contents;
 
 const totalPages = getPageNumbers(blogResponse.totalCount);
