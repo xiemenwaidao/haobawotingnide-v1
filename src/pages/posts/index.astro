@@ -15,4 +15,9 @@ const totalPages = getPageNumbers(blogResponse.totalCount);
 const paginatedPosts = blogs.slice(0, SITE.postPerPage);
 ---
 
-<Posts posts={paginatedPosts} pageNum={1} totalPages={totalPages.length} />
+<Posts
+    posts={paginatedPosts}
+    pageNum={1}
+    totalPages={totalPages.length}
+    type="posts"
+/>

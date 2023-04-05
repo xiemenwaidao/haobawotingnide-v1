@@ -1,0 +1,48 @@
+---
+import { SITE } from "@config";
+import Posts from "@layouts/Posts.astro";
+import getPageNumbers from "@utils/getPageNumbers";
+import { MicroCMSUtils, microcmsFactory } from "@utils/microcms";
+import { log } from "astro/dist/core/logger/core";
+import type { Tag } from "types/microcms";
+
+export interface Props {
+    tag: Tag;
+}
+
+export async function getStaticPaths() {
+    const tagResponse = await MicroCMSUtils.getAllContents({
+        getListFn: microcmsFactory.tags.getList,
+    });
+    const tags = tagResponse.contents;
+
+    return tags.map(tag => {
+        return {
+            params: { tagId: tag.id },
+            props: { tag: tag },
+        };
+    });
+}
+
+const { tag } = Astro.props;
+
+const blogResponse = await MicroCMSUtils.getAllContents({
+    getListFn: microcmsFactory.blogs.getList,
+    options: { queries: { filters: `tag[contains]${tag.id}` } },
+});
+
+const blogs = blogResponse.contents;
+// console.log(blogs);
+
+const totalPages = getPageNumbers(blogResponse.totalCount);
+
+const paginatedPosts = blogs.slice(0, SITE.postPerPage);
+---
+
+<Posts
+    posts={paginatedPosts}
+    pageNum={1}
+    totalPages={totalPages.length}
+    type="tags"
+    tagId={tag.id}
+/>
