@@ -1,11 +1,10 @@
 import {
     createClient,
-    GetListDetailRequest,
     GetListRequest,
     MicroCMSListContent,
     MicroCMSListResponse,
 } from "microcms-js-sdk";
-import type { Blog } from "types/microcms";
+import type { Blog, Tag } from "types/microcms";
 
 interface Props<T> {
     getListFn: (
@@ -28,7 +27,7 @@ export const microcmsFactory = {
         getList: async (options?: Omit<GetListRequest, "endpoint">) => {
             return await client.getList<Blog>({
                 endpoint: "blogs",
-                ...options,
+                queries: options?.queries,
             });
         },
         getLatestList: async () => {
@@ -37,16 +36,22 @@ export const microcmsFactory = {
                 queries: { limit: 3, orders: "-createdAt" },
             });
         },
-        getDetail: async (contentId: string) => {
-            return await client.getListDetail<Blog>({
+        getTagList: async (options?: Omit<GetListRequest, "endpoint">) => {
+            return await client.getList<Blog>({
                 endpoint: "blogs",
-                contentId,
+                queries: options?.queries,
             });
         },
+        // getDetail: async (contentId: string) => {
+        //     return await client.getListDetail<Blog>({
+        //         endpoint: "blogs",
+        //         contentId,
+        //     });
+        // },
     },
     tags: {
         getList: async (options?: Omit<GetListRequest, "endpoint">) => {
-            return await client.getList<Blog>({
+            return await client.getList<Tag>({
                 endpoint: "tags",
                 ...options,
             });
@@ -70,7 +75,7 @@ export class MicroCMSUtils {
             queries: {
                 limit,
                 offset,
-                ...options,
+                ...options?.queries,
             },
         });
 
@@ -116,10 +121,3 @@ export class MicroCMSUtils {
         };
     }
 }
-
-// (async () => {
-//     const result = await MicroCMSUtils.getAllContents(
-//         microcmsFactory.blogs.getList
-//     );
-//     console.log(result);
-// })();
