@@ -1,7 +1,5 @@
 import type { Blog } from "types/microcms";
 import Datetime from "./Datetime";
-import type { BlogFrontmatter } from "@content/_schemas";
-import { removeHtmlTag } from "@utils/helper";
 
 export interface Props {
     href?: string;

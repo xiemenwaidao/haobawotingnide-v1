@@ -20,11 +20,15 @@ const { pageNum, totalPages, posts, type, tagId } = Astro.props;
 
 const prev = pageNum > 1 ? "" : "disabled";
 const next = pageNum < totalPages ? "" : "disabled";
+const pageDesc =
+    type === "tags" && tagId
+        ? `All the articles with the tag "${tagId}".`
+        : "All the articles I've posted.";
 ---
 
 <Layout title={`Posts | ${SITE.title}`}>
     <Header activeNav={type} />
-    <Main pageTitle="Posts" pageDesc="All the articles I've posted.">
+    <Main pageTitle="Posts" pageDesc={pageDesc}>
         <ul>
             {posts.map(blog => <Card href={`/posts/${blog.id}`} blog={blog} />)}
         </ul>
@@ -71,7 +75,7 @@ const next = pageNum < totalPages ? "" : "disabled";
 
 <style>
     .pagination-wrapper {
-        @apply mt-auto mb-8 flex justify-center;
+        @apply mb-8 mt-auto flex justify-center;
     }
     .disabled {
         @apply pointer-events-none select-none opacity-50 hover:text-skin-base group-hover:fill-skin-base;

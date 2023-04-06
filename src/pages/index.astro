@@ -38,10 +38,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
                 </svg>
             </a>
 
-            <p>
-                いらっしゃいませ。当サイトをご覧いただきありがとうございます。私たちは、皆さまにとって役立つ情報を提供することを目的として、このサイトを運営しております。当サイトでは、様々なジャンルの情報を取り扱っており、お客様のニーズに合わせた情報を提供するよう心がけております。例えば、最新のトレンドや話題のニュース、健康や美容に関する情報など、様々なジャンルの情報を取り扱っております。また、当サイトでは、読者の皆様からのご意見やご感想をお待ちしております。何かご質問やご要望がございましたら、お気軽にお問い合わせください。私たちは、常に皆様のお役に立てるよう、努力を重ねてまいります。By
-                ChatGPT3.5-default
-            </p>
+            <p>見にきてくれて、ありがとう！！</p>
             <!-- <p>
                 Read the blog posts or check
                 <LinkButton
@@ -100,13 +97,11 @@ const socialCount = SOCIALS.filter(social => social.active).length;
                     // )
 
                     blogResponse.contents.map(blog => (
-                        <li class="my-10 border-b pb-8 dark:border-gray-700">
-                            <Card
-                                href={`/posts/${blog.id}`}
-                                blog={blog}
-                                secHeading={false}
-                            />
-                        </li>
+                        <Card
+                            href={`/posts/${blog.id}`}
+                            blog={blog}
+                            secHeading={false}
+                        />
                     ))
                 }
             </ul>
@@ -129,7 +124,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 <style>
     /* ===== Hero Section ===== */
     #hero {
-        @apply pt-8 pb-6;
+        @apply pb-6 pt-8;
     }
     #hero h1 {
         @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
@@ -147,13 +142,13 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         @apply mt-4 flex flex-col sm:flex-row sm:items-center;
     }
     .social-links {
-        @apply mr-2 mb-1 whitespace-nowrap sm:mb-0;
+        @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
     }
 
     /* ===== Featured & Recent Posts Sections ===== */
     #featured,
     #recent-posts {
-        @apply pt-12 pb-6;
+        @apply pb-6 pt-12;
     }
     #featured h2,
     #recent-posts h2 {
