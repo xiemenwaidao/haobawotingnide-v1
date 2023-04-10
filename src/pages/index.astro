@@ -8,6 +8,7 @@ import Card from "@components/Card";
 import Socials from "@components/Socials.astro";
 import { SOCIALS } from "@config";
 import { MicroCMSUtils, microcmsFactory } from "@utils/microcms";
+import Hitokoto from "@components/Hitokoto";
 
 const blogResponse = await MicroCMSUtils.getContents({
     getListFn: microcmsFactory.blogs.getLatestList,
@@ -39,6 +40,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
             </a>
 
             <p>見にきてくれて、ありがとう！！</p>
+            <Hitokoto client:load />
             {
                 // only display if at least one social link is enabled
                 socialCount > 0 && (
