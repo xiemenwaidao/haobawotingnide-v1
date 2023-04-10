@@ -5,7 +5,7 @@ export const SITE: Site = {
     author: "Menxie Lijiao",
     desc: "my blog",
     title: "HAOBAWOTINGNIDE",
-    ogImage: "astropaper-og.jpg",
+    ogImage: "ogImage.png",
     lightAndDarkMode: true,
     postPerPage: 3,
 };
