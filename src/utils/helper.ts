@@ -12,3 +12,5 @@ export const getEyecatchPath = (eyecatch: Blog["eyecatch"]) => {
     const dummyPath = import.meta.env.DUMMY_IMG_PATH as string;
     return eyecatch ? eyecatch.url : dummyPath;
 };
+
+export const fetcher = (url: string) => fetch(url).then(res => res.json());
