@@ -1,18 +1,22 @@
-import { getCollection } from "astro:content";
 import generateOgImage from "@utils/generateOgImage";
 import type { APIRoute } from "astro";
+import { MicroCMSUtils, microcmsFactory } from "@utils/microcms";
 
 export const get: APIRoute = async ({ params }) => ({
-  body: await generateOgImage(params.ogTitle),
+    body: await generateOgImage(params.ogTitle),
 });
 
-const postImportResult = await getCollection("blog", ({ data }) => !data.draft);
-const posts = Object.values(postImportResult);
+const blogResponse = await MicroCMSUtils.getAllContents({
+    getListFn: microcmsFactory.blogs.getList,
+});
+const blogs = blogResponse.contents;
 
 export function getStaticPaths() {
-  return posts
-    .filter(({ data }) => !data.ogImage)
-    .map(({ data }) => ({
-      params: { ogTitle: data.title },
-    }));
+    return (
+        blogs
+            // .filter(blog => !blog.eyecatch?.url)
+            .map(blog => ({
+                params: { ogTitle: blog.title },
+            }))
+    );
 }
