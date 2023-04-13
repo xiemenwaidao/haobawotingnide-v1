@@ -112,7 +112,7 @@ const generateOgImage = async (mytext = SITE.title) => {
     const fonts: Font[] = [];
     if (fontData) {
         fonts.push({
-            name: "NotoSansJapanese",
+            name: "NotoSerifJapanese",
             data: fontData,
             weight: 700,
             style: "normal",
