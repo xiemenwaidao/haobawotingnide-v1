@@ -1,6 +1,8 @@
+import { SITE } from "@config";
+
 // @see https://blog.sus-happy.net/astrojs-ssr/
 export const loadGoogleFont = async (title: string) => {
-    const text = `${title}`;
+    const text = `${title}${SITE.author}${SITE.title}`;
     const API = `https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&text=${text}`;
 
     const css = await (
