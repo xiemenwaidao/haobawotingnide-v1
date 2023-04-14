@@ -26,17 +26,20 @@ async function getFontData() {
 export async function getOgImage(text: string) {
     const fontData = (await getFontData()) as ArrayBuffer;
 
-    const svg = await satori(<div>{text}</div>, {
-        width: 800,
-        height: 400,
-        fonts: [
-            {
-                name: "Noto Sans JP",
-                data: fontData,
-                style: "normal",
-            },
-        ],
-    });
+    const svg = await satori(
+        <div style={{ background: "#fefbfb" }}>{text}</div>,
+        {
+            width: 800,
+            height: 400,
+            fonts: [
+                {
+                    name: "Noto Sans JP",
+                    data: fontData,
+                    style: "normal",
+                },
+            ],
+        }
+    );
 
     return await sharp(Buffer.from(svg)).png().toBuffer();
 }
