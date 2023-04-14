@@ -1,5 +1,6 @@
 import satori from "satori";
 import sharp from "sharp";
+import OgImageStyle from "./OgImageStyle";
 
 async function getFontData() {
     const API = `https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700`;
@@ -26,20 +27,17 @@ async function getFontData() {
 export async function getOgImage(text: string) {
     const fontData = (await getFontData()) as ArrayBuffer;
 
-    const svg = await satori(
-        <div style={{ background: "#fefbfb" }}>{text}</div>,
-        {
-            width: 800,
-            height: 400,
-            fonts: [
-                {
-                    name: "Noto Sans JP",
-                    data: fontData,
-                    style: "normal",
-                },
-            ],
-        }
-    );
+    const svg = await satori(<OgImageStyle text={text} />, {
+        width: 1200,
+        height: 630,
+        fonts: [
+            {
+                name: "Noto Sans JP",
+                data: fontData,
+                style: "normal",
+            },
+        ],
+    });
 
     return await sharp(Buffer.from(svg)).png().toBuffer();
 }
