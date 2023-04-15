@@ -69,6 +69,9 @@ module.exports = {
                 noto: ['Noto Sans JP', 'sans-serif'],
                 zh: ['ZCOOL XiaoWei', 'sans-serif'],
             },
+            textUnderlineOffset: {
+                5: '5px',
+            },
             // https://tail-animista.vercel.app/play/text/focus-in/text-focus-in
             animation: {
                 "text-focus-in": "text-focus-in 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530)   both"
