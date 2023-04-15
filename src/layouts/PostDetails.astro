@@ -5,6 +5,8 @@ import Footer from "@components/Footer.astro";
 import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime";
 import type { Blog } from "types/microcms";
+import { load } from "cheerio";
+import hljs from "highlight.js";
 
 export interface Props {
     post: Blog;
@@ -15,6 +17,14 @@ const { post } = Astro.props;
 const { id, title, description, eyecatch, publishedAt, tag, content } = post;
 
 const ogUrl = new URL(`/og/${id}.png`, Astro.url.origin).href;
+
+const $ = load(content);
+$("pre code").each((_, elm) => {
+    const result = hljs.highlightAuto($(elm).text());
+    $(elm).html(result.value);
+    $(elm).addClass("hljs");
+});
+const html = $.html();
 ---
 
 <Layout title={title} description={description} ogImage={ogUrl}>
@@ -39,10 +49,7 @@ const ogUrl = new URL(`/og/${id}.png`, Astro.url.origin).href;
             role="article"
             class="prose mx-auto mt-8 max-w-3xl"
         >
-            <div
-                set:html={content}
-                class="prose prose-lg max-w-none pt-10 pb-8"
-            />
+            <div set:html={html} class="prose prose-lg max-w-none pt-10 pb-8" />
         </article>
 
         <ul class="tags-container">

@@ -38,10 +38,10 @@ export default defineConfig({
                 },
             ],
         ],
-        shikiConfig: {
-            theme: "one-dark-pro",
-            wrap: true,
-        },
+        // shikiConfig: {
+        //     theme: "one-dark-pro",
+        //     wrap: true,
+        // },
         extendDefaultPlugins: true,
     },
     // vite: {
