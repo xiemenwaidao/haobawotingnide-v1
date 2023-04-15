@@ -24,7 +24,7 @@ if (breadcrumbList[0] === "tags" && breadcrumbList[1]) {
 <nav class="breadcrumb" aria-label="breadcrumb">
     <ul>
         <li>
-            <a href="/">Home</a>
+            <a href="/" title="home">Home</a>
             <span aria-hidden="true">&#62;</span>
         </li>
         {
@@ -38,7 +38,9 @@ if (breadcrumbList[0] === "tags" && breadcrumbList[1]) {
                     </li>
                 ) : (
                     <li>
-                        <a href={`/${breadcrumb}`}>{breadcrumb}</a>
+                        <a href={`/${breadcrumb}`} title="breadcrumb">
+                            {breadcrumb}
+                        </a>
                         <span aria-hidden="true">&#62;</span>
                     </li>
                 )

@@ -13,4 +13,21 @@ export const getEyecatchPath = (eyecatch: Blog["eyecatch"]) => {
     return eyecatch ? eyecatch.url : dummyPath;
 };
 
-export const fetcher = (url: string) => fetch(url).then(res => res.json());
+export const fetcher = async (url: string) => {
+    const response = await fetch(url, {
+        headers: {
+            "X-Content-Type-Options": "nosniff",
+        },
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch data");
+    }
+
+    console.log(response);
+    // レスポンスヘッダーに「X-Content-Type-Options」ヘッダーを設定する
+    // response.headers.set("X-Content-Type-Options", "nosniff");
+
+    const data = await response.json();
+    return data;
+};

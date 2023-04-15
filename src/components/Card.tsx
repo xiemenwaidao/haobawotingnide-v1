@@ -15,6 +15,7 @@ export default function Card({ href, blog, secHeading = true }: Props) {
             <a
                 href={href}
                 className="inline-block w-full text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+                title={title}
             >
                 {secHeading ? (
                     <h2 className="text-lg font-medium decoration-dashed hover:underline max-sm:truncate">
