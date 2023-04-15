@@ -1,3 +1,4 @@
+/** @see https://github.com/70-10/blog/blob/main/src/pages/og/%5Bslug%5D.png.ts */
 import type { APIContext } from "astro";
 import { getOgImage } from "@components/OgImage";
 import { MicroCMSUtils, microcmsFactory } from "@utils/microcms";
