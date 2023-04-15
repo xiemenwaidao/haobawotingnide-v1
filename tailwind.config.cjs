@@ -65,7 +65,8 @@ module.exports = {
                 transparent: "transparent",
             },
             fontFamily: {
-                mono: ["IBM Plex Mono", "monospace"],
+                noto: ['Noto Sans JP', 'sans-serif'],
+                zh: ['ZCOOL XiaoWei', 'sans-serif'],
             },
             // https://tail-animista.vercel.app/play/text/focus-in/text-focus-in
             animation: {
