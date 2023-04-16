@@ -24,7 +24,7 @@ export const fetcher = async (url: string) => {
         throw new Error("Failed to fetch data");
     }
 
-    console.log(response);
+    // console.log(response);
     // レスポンスヘッダーに「X-Content-Type-Options」ヘッダーを設定する
     // response.headers.set("X-Content-Type-Options", "nosniff");
 
