@@ -1,7 +1,7 @@
 ---
 import type { Work } from "@assets/worksData";
 import LinkButton from "./LinkButton.astro";
-import { Image } from "@astrojs/image/components";
+import { Image, Picture } from "@astrojs/image/components";
 
 interface Props {
     work: Work;
@@ -12,12 +12,12 @@ const { work } = Astro.props;
 <li>
     <div class="max-w-full sm:max-w-sm rounded-lg shadow h-full flex flex-col">
         <a href={work.href}>
-            <Image
+            <Picture
                 src={work.imgSrc}
                 alt={work.title}
-                format="webp"
-                width={640}
-                height={350}
+                widths={[300, 600]}
+                sizes="(max-width: 600px) 100vw, 600px"
+                aspectRatio="64:35"
                 class="rounded-t-lg"
             />
         </a>
