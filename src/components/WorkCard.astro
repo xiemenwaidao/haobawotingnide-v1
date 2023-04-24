@@ -10,13 +10,6 @@ const { work } = Astro.props;
 ---
 
 <li>
-    <!-- <a href={work.href} target="_blank">
-        <img src={work.imgSrc} alt={work.title} />
-        <h2>{work.title}</h2>
-        <span>{work.date}</span>
-        <p>{work.description}</p>
-    </a> -->
-
     <div class="max-w-full sm:max-w-sm rounded-lg shadow h-full flex flex-col">
         <a href={work.href}>
             <Image
@@ -39,7 +32,7 @@ const { work } = Astro.props;
             <p class="mb-5 font-normal grow">
                 {work.description}
             </p>
-            <LinkButton href={work.href} className={"w-fit"}>
+            <LinkButton href={work.href} target="_blank" className={"w-fit"}>
                 Read more
                 <svg xmlns="http://www.w3.org/2000/svg"
                     ><path
