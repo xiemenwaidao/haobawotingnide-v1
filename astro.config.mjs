@@ -30,6 +30,7 @@ export default defineConfig({
         }),
         image({
             serviceEntryPoint: "@astrojs/image/sharp",
+            // logLevel: "debug",
         }),
     ],
     markdown: {
