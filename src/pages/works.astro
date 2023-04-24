@@ -1,0 +1,18 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Main from "@layouts/Main.astro";
+import worksData from "@assets/worksData";
+import WorkCard from "@components/WorkCard.astro";
+---
+
+<Layout>
+    <Header />
+    <Main pageTitle="Works" pageDesc={"₍₍ ᕕ( ˘ω˘ )ᕗ⁾⁾"}>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {worksData.reverse().map(work => <WorkCard work={work} />)}
+        </ul>
+    </Main>
+    <Footer />
+</Layout>

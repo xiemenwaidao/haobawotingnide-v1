@@ -41,6 +41,7 @@ module.exports = {
                     inverted: withOpacity("--color-text-base"),
                     card: withOpacity("--color-card"),
                     "card-muted": withOpacity("--color-card-muted"),
+                    "work-btn": withOpacity("--color-hongse"),
                 },
             },
             outlineColor: {
@@ -71,6 +72,9 @@ module.exports = {
             },
             textUnderlineOffset: {
                 5: '5px',
+            },
+            boxShadow: {
+                'DEFAULT': '0 1px 3px 0 rgb(var(--color-shadow)), 0 1px 2px -1px rgb(var(--color-shadow))',
             },
             // https://tail-animista.vercel.app/play/text/focus-in/text-focus-in
             animation: {
