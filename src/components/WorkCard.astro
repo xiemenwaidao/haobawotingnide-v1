@@ -1,7 +1,6 @@
 ---
 import type { Work } from "@assets/worksData";
 import LinkButton from "./LinkButton.astro";
-import { Picture } from "@astrojs/image/components";
 
 interface Props {
     work: Work;
@@ -9,15 +8,12 @@ interface Props {
 const { work } = Astro.props;
 ---
 
-<li>
+<li class="workcard">
     <div class="max-w-full sm:max-w-sm rounded-lg shadow h-full flex flex-col">
         <a href={work.href}>
-            <Picture
-                src={import(`../assets/img/works/${work.title}.png`)}
+            <img
+                src={`/assets/img/works/${work.title}.png`}
                 alt={work.title}
-                sizes="(max-width: 800px) 100vw, 800px"
-                widths={[200, 400, 800]}
-                aspectRatio="16:9"
                 class="rounded-t-lg"
             />
         </a>
@@ -43,3 +39,9 @@ const { work } = Astro.props;
         </div>
     </div>
 </li>
+
+<style>
+    img {
+        filter: url(#squiggle);
+    }
+</style>

@@ -13,8 +13,8 @@ export default function OgImageStyle({ text }: { text: string }) {
             <div
                 style={{
                     background: "#ffffff",
-                    width: "90%",
-                    height: "90%",
+                    width: "1140px",
+                    height: "570px",
                     display: "flex",
                     flexFlow: "column",
                 }}
