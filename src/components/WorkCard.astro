@@ -10,7 +10,7 @@ const { work } = Astro.props;
 
 <li class="workcard">
     <div class="max-w-full sm:max-w-sm rounded-lg shadow h-full flex flex-col">
-        <a href={work.href}>
+        <a href={work.href} target="_blank">
             <img
                 src={`/assets/img/works/${work.title}.png`}
                 alt={work.title}
@@ -18,9 +18,9 @@ const { work } = Astro.props;
             />
         </a>
         <div class="flex-grow flex flex-col p-5">
-            <a href={work.href}>
+            <a href={work.href} class="w-fit" target="_blank">
                 <h5
-                    class="mb-2 text-2xl font-bold tracking-tight text-skin-accent hover:underline decoration-dashed"
+                    class="mb-2 text-2xl w-fit font-bold tracking-tight text-skin-accent hover:underline decoration-dashed"
                 >
                     {work.title}
                 </h5>
