@@ -78,7 +78,8 @@ module.exports = {
             },
             // https://tail-animista.vercel.app/play/text/focus-in/text-focus-in
             animation: {
-                "text-focus-in": "text-focus-in 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530)   both"
+                "text-focus-in": "text-focus-in 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both",
+                "marquee": 'marquee 15s linear infinite;'
             },
             keyframes: {
                 "text-focus-in": {
@@ -90,6 +91,10 @@ module.exports = {
                         filter: "blur(0)",
                         opacity: "1"
                     }
+                },
+                "marquee": {
+                    from: { transform: "translateX(0)"},
+                    to: { transform: "translateX(-100%)"}
                 }
             }
         },

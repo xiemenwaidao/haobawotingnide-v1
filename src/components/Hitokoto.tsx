@@ -4,7 +4,8 @@ import type { HitokotoResponse } from "types/common";
 
 const Hitokoto = () => {
     const { data, isLoading } = useSWR<HitokotoResponse>(
-        "https://international.v1.hitokoto.cn/",
+        // "https://international.v1.hitokoto.cn/",
+        "https://v1.hitokoto.cn",
         fetcher
     );
 
@@ -12,7 +13,7 @@ const Hitokoto = () => {
 
     if (isLoading) {
         return (
-            <div className="h-12 sm:h-6">
+            <div className="">
                 <svg
                     className="-ml-1 mr-3 h-5 w-5 animate-spin fill-none text-white"
                     xmlns="http://www.w3.org/2000/svg"
@@ -33,16 +34,17 @@ const Hitokoto = () => {
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                     ></path>
                 </svg>
-                <span className="font-zh text-xs">loading...</span>
+                <span className="text-xs">loading...</span>
             </div>
         );
     }
 
     return (
-        <p className="animate-text-focus-in font-zh">
-            {data?.hitokoto}{" "}
-            <span className="block sm:inline">by:{data?.from}</span>
-        </p>
+        <div className="overflow-x-hidden">
+            <span className="inline-block animate-marquee whitespace-nowrap  pl-[100%] font-zh">
+                {data?.hitokoto} <span className="">by:{data?.from}</span>
+            </span>
+        </div>
     );
 };
 
