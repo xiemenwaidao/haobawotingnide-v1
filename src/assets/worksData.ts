@@ -32,7 +32,7 @@ const worksData: Work[] = [
         tags: ["Three.js", "Vue.js"],
     },
     {
-        title: "lowpoy-room",
+        title: "lowpoly-room",
         description:
             "ThreeJsJourneyを受講後に作成。bakeが難しかった。この頃からTypeScriptを使い始める。Blenderも初めて使用した。",
         date: "2021/11",
