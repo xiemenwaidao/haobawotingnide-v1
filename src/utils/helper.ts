@@ -8,10 +8,10 @@ export const removeHtmlTag = (text: string) => {
 };
 
 /** */
-export const getEyecatchPath = (eyecatch: Blog["eyecatch"]) => {
-    const dummyPath = import.meta.env.DUMMY_IMG_PATH as string;
-    return eyecatch ? eyecatch.url : dummyPath;
-};
+// export const getEyecatchPath = (eyecatch: Blog["eyecatch"]) => {
+//     const dummyPath = import.meta.env.DUMMY_IMG_PATH as string;
+//     return eyecatch ? eyecatch.url : dummyPath;
+// };
 
 export const fetcher = async (url: string) => {
     const response = await fetch(url, {
