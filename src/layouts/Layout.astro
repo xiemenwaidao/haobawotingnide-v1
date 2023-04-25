@@ -9,6 +9,7 @@ export interface Props {
     author?: string;
     description?: string;
     ogImage?: string;
+    zh?: boolean;
 }
 
 const {
@@ -16,6 +17,7 @@ const {
     author = SITE.author,
     description = SITE.desc,
     ogImage = SITE.ogImage,
+    zh = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -108,10 +110,19 @@ const socialImageURL = new URL(
         <!-- Google Font -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=ZCOOL+XiaoWei&display=swap"
-            rel="stylesheet"
-        />
+        {
+            zh ? (
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=ZCOOL+XiaoWei&display=swap"
+                    rel="stylesheet"
+                />
+            ) : (
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+                    rel="stylesheet"
+                />
+            )
+        }
 
         {
             // If PUBLIC_GOOGLE_SITE_VERIFICATION is set in the environment variable,
