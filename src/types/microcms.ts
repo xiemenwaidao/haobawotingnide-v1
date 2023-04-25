@@ -18,11 +18,11 @@ export type Blog = {
     content: string; // body(HTML or Object)
     description: string; // 説明
     // アイキャッチ画像
-    eyecatch?: {
-        url: string;
-        height: number;
-        width: number;
-    };
+    // eyecatch?: {
+    //     url: string;
+    //     height: number;
+    //     width: number;
+    // };
     tag: Tag[];
 };
 
