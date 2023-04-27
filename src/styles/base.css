@@ -48,7 +48,12 @@
         display: block;
     }
     body {
-        @apply flex min-h-screen flex-col bg-skin-fill font-noto text-skin-base
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: 100%;
+        /* @apply flex flex-col min-h-screen bg-skin-fill font-noto text-skin-base
+    selection:bg-skin-accent selection:bg-opacity-70 selection:text-skin-inverted; */
+        @apply min-h-screen bg-skin-fill font-noto text-skin-base
     selection:bg-skin-accent selection:bg-opacity-70 selection:text-skin-inverted;
     }
     section,

@@ -24,3 +24,8 @@ pnpm-debug.log*
 
 # ignore Jampack cache files
 .jampack/
+
+# blender
+public/assets/model/*.blend*
+public/assets/model/*.bin
+public/assets/model/*.gltf
