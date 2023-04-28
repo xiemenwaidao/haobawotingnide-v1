@@ -28,7 +28,7 @@ import { Box3, BoxHelper, Color, Vector3 } from "three";
 import type { Group, Mesh } from "three";
 import useMode from "./useMode";
 
-useGLTF.preload("/logocube.glb");
+useGLTF.preload("/assets/model/logocube.glb");
 
 type GLTFResult = GLTF & {
     nodes: {
