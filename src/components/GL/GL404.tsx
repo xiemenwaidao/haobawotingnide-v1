@@ -1,12 +1,14 @@
 import { Canvas } from "@react-three/fiber";
-import { Environment } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
-import { Physics } from "@react-three/cannon";
+import { Debug, Physics } from "@react-three/cannon";
 import { Color } from "three";
 import useMode from "@hooks/useMode";
 import Plane from "./Plane";
 
 import Cube from "./Model";
+import { darkParams, lightParams } from "@utils/const";
+import Lights from "./Lights";
 
 export default function GL404() {
     const mode = useMode();
@@ -19,26 +21,22 @@ export default function GL404() {
                 camera={{ position: [-5, 10, 5], fov: 50 }}
                 onCreated={({ scene }) =>
                     (scene.background = new Color(
-                        mode === "dark" ? "#212737" : "#f5f3ff"
+                        mode === "dark"
+                            ? darkParams.bgColor
+                            : lightParams.bgColor
                     ))
                 }
             >
                 <color
                     attach="background"
-                    args={[mode === "dark" ? "#212737" : "#f5f3ff"]}
+                    args={[
+                        mode === "dark"
+                            ? darkParams.bgColor
+                            : lightParams.bgColor,
+                    ]}
                 />
                 <Environment preset="sunset" />
-                <ambientLight intensity={0.5} />
-                <hemisphereLight intensity={0.35} />
-                <spotLight
-                    position={[5, 5, 5]}
-                    angle={0.3}
-                    penumbra={1}
-                    intensity={2}
-                    castShadow
-                    shadow-mapSize-width={256}
-                    shadow-mapSize-height={256}
-                />
+                <Lights />
                 <Physics broadphase="SAP">
                     {/* <Debug color="red" scale={1.1}> */}
                     <Plane color={mode === "dark" ? "#212737" : "#f5f3ff"} />
@@ -47,7 +45,7 @@ export default function GL404() {
                     ))}
                     {/* </Debug> */}
                 </Physics>
-                {/* <OrbitControls makeDefault /> */}
+                <OrbitControls makeDefault />
             </Canvas>
         </Suspense>
     );

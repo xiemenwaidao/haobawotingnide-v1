@@ -1,6 +1,7 @@
 import type { BoxProps } from "@react-three/cannon";
 import { useBox } from "@react-three/cannon";
 import { useGLTF } from "@react-three/drei";
+import { lightParams, darkParams } from "@utils/const";
 import { useEffect, useMemo, useRef } from "react";
 import { Box3, Color, Vector3 } from "three";
 import type { Group } from "three";
@@ -49,29 +50,23 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
 
     useEffect(() => {
         if (props.mode === "dark") {
-            materials.neise.color = new Color("#A33206");
+            materials.neise.color = new Color(darkParams.cubeColor);
         } else {
-            materials.neise.color = new Color("#006CAC");
+            materials.neise.color = new Color(lightParams.cubeColor);
         }
     }, [props.mode]);
-
-    // const mesh = useRef<Group>(null!);
-    // useHelper(mesh, BoxHelper, "red");
 
     return (
         <group
             ref={ref}
             onClick={() => {
                 api.applyImpulse(
-                    [Math.random() * 0.1, 3, Math.random() * 1],
+                    [Math.random() * 1 - 0.5, 2, Math.random() * 1 - 0.5],
                     [0, -0.5, 0]
                 );
             }}
         >
-            <group
-                position={[0, 0, 0]}
-                //  ref={mesh}
-            >
+            <group position={[0, 0, 0]}>
                 <mesh
                     castShadow
                     receiveShadow
