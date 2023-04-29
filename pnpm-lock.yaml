@@ -25,6 +25,9 @@ dependencies:
   highlight.js:
     specifier: ^11.7.0
     version: 11.7.0
+  immer:
+    specifier: ^10.0.1
+    version: 10.0.1
   microcms-js-sdk:
     specifier: ^2.3.3
     version: 2.3.3
@@ -52,6 +55,9 @@ dependencies:
   three-stdlib:
     specifier: ^2.21.9
     version: 2.21.9(three@0.151.3)
+  zustand:
+    specifier: ^4.3.7
+    version: 4.3.7(immer@10.0.1)(react@18.2.0)
 
 devDependencies:
   '@astrojs/partytown':
@@ -3474,6 +3480,10 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
+  /immer@10.0.1:
+    resolution: {integrity: sha512-zg++jJLsKKTwXGeSYIw0HgChSYQGtu0UDTnbKx5aGLYgte4CwTmH9eJDYyQ6FheyUtBe+lQW9FrGxya1G+Dtmg==}
+    dev: false
+
   /import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -6710,6 +6720,23 @@ packages:
         optional: true
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /zustand@4.3.7(immer@10.0.1)(react@18.2.0):
+    resolution: {integrity: sha512-dY8ERwB9Nd21ellgkBZFhudER8KVlelZm8388B5nDAXhO/+FZDhYMuRnqDgu5SYyRgz/iaf8RKnbUs/cHfOGlQ==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      immer: 10.0.1
+      react: 18.2.0
+      use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
   /zwitch@2.0.4:

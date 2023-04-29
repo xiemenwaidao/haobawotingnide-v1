@@ -9,10 +9,12 @@ const Plane = (props: PlaneProps & { color: string }) => {
         useRef<Mesh>(null)
     );
     return (
-        <mesh ref={ref} receiveShadow>
-            <planeGeometry args={[100, 100]} />
-            <shadowMaterial color={props.color} />
-        </mesh>
+        <group>
+            <mesh ref={ref} receiveShadow>
+                <planeGeometry args={[100, 100]} />
+                <shadowMaterial color={props.color} />
+            </mesh>
+        </group>
     );
 };
 
