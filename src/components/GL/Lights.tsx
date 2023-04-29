@@ -41,7 +41,7 @@ const Lights = () => {
                 shadow-mapSize-height={256}
                 ref={ref}
                 color={"#ff0000"}
-                distance={20}
+                distance={10}
             />
         </>
     );
