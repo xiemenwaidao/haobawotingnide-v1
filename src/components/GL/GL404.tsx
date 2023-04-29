@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls, Stats } from "@react-three/drei";
 import { Suspense } from "react";
 import { Debug, Physics } from "@react-three/cannon";
 import { Color } from "three";
@@ -38,14 +38,15 @@ export default function GL404() {
                 <Environment preset="sunset" />
                 <Lights />
                 <Physics broadphase="SAP">
-                    {/* <Debug color="red" scale={1.1}> */}
-                    <Plane color={mode === "dark" ? "#212737" : "#f5f3ff"} />
-                    {Array.from({ length: 1 }).map((_, i) => (
-                        <Cube position={[0, 10, 0]} key={i} mode={mode} />
-                    ))}
-                    {/* </Debug> */}
+                    <Debug color="red" scale={1.1}>
+                        <Plane
+                            color={mode === "dark" ? "#212737" : "#f5f3ff"}
+                        />
+                        <Cube position={[0, 10, 0]} mode={mode} />
+                    </Debug>
                 </Physics>
                 <OrbitControls makeDefault />
+                <Stats />
             </Canvas>
         </Suspense>
     );

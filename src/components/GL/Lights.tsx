@@ -1,30 +1,47 @@
 import { useHelper } from "@react-three/drei/native";
+import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { Color, DirectionalLight, DirectionalLightHelper } from "three";
+import { useCubeStore } from "stores/useGLStore";
+import { Quaternion, SpotLight, SpotLightHelper, Vector3 } from "three";
 
 const Lights = () => {
-    // const direRef = useRef<DirectionalLight>(null!);
-    // useHelper(direRef, DirectionalLightHelper);
+    const ref = useRef<SpotLight>(null!);
+    useHelper(ref, SpotLightHelper);
+
+    const cubePosition = useCubeStore(state => state.position);
+    const cubeQuaternion = useCubeStore(state => state.quaternion);
+
+    const upFaceNormal = new Vector3(0, 1, 0).applyQuaternion(
+        new Quaternion(...cubeQuaternion)
+    );
+
+    const lightOffset = new Vector3(2, 3, 2);
+    const lightPosition = new Vector3()
+        .addVectors(new Vector3(...cubePosition), upFaceNormal)
+        .add(lightOffset);
+
+    useFrame(() => {
+        if (ref.current) {
+            ref.current.target.position.set(...cubePosition);
+            ref.current.target.updateMatrixWorld();
+        }
+    });
 
     return (
         <>
-            {/* <ambientLight intensity={0.5} /> */}
+            <ambientLight intensity={0.5} />
             {/* <hemisphereLight ref={hemiRef} intensity={0.35} /> */}
-            {/* <spotLight
-                position={[5, 5, 5]}
+            <spotLight
+                position={lightPosition.toArray()}
                 angle={0.3}
                 penumbra={1}
                 intensity={2}
                 castShadow
                 shadow-mapSize-width={256}
                 shadow-mapSize-height={256}
-            /> */}
-            <directionalLight
-                // ref={direRef}
-                position={[-3, 5, 10]}
-                color={new Color("#FFFFFF")}
-                intensity={1}
-                castShadow
+                ref={ref}
+                color={"#ff0000"}
+                distance={20}
             />
         </>
     );
