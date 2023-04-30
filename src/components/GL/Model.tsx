@@ -1,8 +1,9 @@
-import type { BoxProps } from "@react-three/cannon";
+import type { BoxProps, Triplet } from "@react-three/cannon";
 import { useBox } from "@react-three/cannon";
 import { useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 import { lightParams, darkParams } from "@utils/const";
-import { useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useCubeStore } from "stores/useGLStore";
 import { Box3, Color, Vector3 } from "three";
 import type { Group } from "three";
@@ -26,13 +27,7 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
         "/assets/model/logocube.glb"
     ) as GLTFResult;
 
-    const boxSize = useMemo(() => {
-        const box = new Box3().setFromObject(nodes.kuang);
-        const size = new Vector3();
-        box.getSize(size);
-        // return [size.x, size.y, size.z];
-        return size.toArray();
-    }, [nodes.kuang]);
+    const [boxPosition, setBoxPosition] = useState<Triplet>([0, 0, 0]);
 
     const [ref, api] = useBox(
         () => ({
@@ -49,6 +44,16 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
         useRef<Group>(null!)
     );
 
+    /** 物理設定 */
+    const boxSize = useMemo(() => {
+        const box = new Box3().setFromObject(nodes.kuang);
+        const size = new Vector3();
+        box.getSize(size);
+        // return [size.x, size.y, size.z];
+        return size.toArray();
+    }, [nodes.kuang]);
+
+    /** dark mode */
     useEffect(() => {
         if (props.mode === "dark") {
             materials.neise.color = new Color(darkParams.cubeColor);
@@ -57,10 +62,12 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
         }
     }, [props.mode]);
 
+    /**  */
     const { setPosition, setQuaternion } = useCubeStore();
     useEffect(() => {
         const positionUnsubscribe = api.position.subscribe(position => {
             setPosition(position);
+            setBoxPosition(position);
         });
 
         const quaternionUnsubscribe = api.quaternion.subscribe(quaternion => {
@@ -73,20 +80,39 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
         };
     }, [api, setPosition, setQuaternion]);
 
+    const onClickHandler = () => {
+        const target = new Vector3(0, 0, 0); // オブジェクトが向かうべきターゲット（画面の中心）
+
+        // オブジェクトの位置からターゲットへの方向ベクトルを計算
+        const direction = target.clone().sub(new Vector3(...boxPosition));
+        const n = direction.clone().setY(Math.abs(direction.y)).normalize();
+
+        // 衝撃力の大きさ
+        const forceMagnitude = 3.5;
+
+        // 衝撃力を方向ベクトルに適用
+        const impulse: Triplet = [
+            forceMagnitude * n.x,
+            forceMagnitude * n.y,
+            forceMagnitude * n.z,
+        ];
+
+        // トルクの値をランダムに設定
+        const torque: Triplet = [
+            (Math.random() - 0.5) * Math.PI,
+            (Math.random() - 0.5) * Math.PI,
+            (Math.random() - 0.5) * Math.PI,
+        ];
+
+        // console.log(new Vector3(...impulse));
+
+        const worldPoint: Triplet = [0, 0, 0];
+        api.applyImpulse(impulse, worldPoint);
+        api.applyTorque(torque);
+    };
+
     return (
-        <group
-            ref={ref}
-            onClick={() => {
-                api.applyImpulse(
-                    [Math.random() * 1 - 0.5, 1, Math.random() * 1 - 0.5],
-                    [
-                        Math.random() * 0.5 - 0.25,
-                        -0.0,
-                        Math.random() * 0.5 - 0.25,
-                    ]
-                );
-            }}
-        >
+        <group ref={ref} onClick={onClickHandler}>
             <group position={[0, 0, 0]}>
                 <mesh
                     castShadow
