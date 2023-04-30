@@ -6,7 +6,7 @@ import { Quaternion, SpotLight, SpotLightHelper, Vector3 } from "three";
 
 const Lights = () => {
     const ref = useRef<SpotLight>(null!);
-    useHelper(ref, SpotLightHelper);
+    // useHelper(ref, SpotLightHelper);
 
     const cubePosition = useCubeStore(state => state.position);
     const cubeQuaternion = useCubeStore(state => state.quaternion);
@@ -15,7 +15,7 @@ const Lights = () => {
         new Quaternion(...cubeQuaternion)
     );
 
-    const lightOffset = new Vector3(2, 3, 2);
+    const lightOffset = new Vector3(2, 4, 2);
     const lightPosition = new Vector3()
         .addVectors(new Vector3(...cubePosition), upFaceNormal)
         .add(lightOffset);
@@ -29,8 +29,8 @@ const Lights = () => {
 
     return (
         <>
-            <ambientLight intensity={0.5} />
-            {/* <hemisphereLight ref={hemiRef} intensity={0.35} /> */}
+            <ambientLight intensity={1.0} />
+            {/* <hemisphereLight intensity={0.35} /> */}
             <spotLight
                 position={lightPosition.toArray()}
                 angle={0.3}
