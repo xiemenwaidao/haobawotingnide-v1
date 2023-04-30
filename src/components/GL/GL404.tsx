@@ -44,7 +44,7 @@ export default function GL404() {
                     <Cube position={[0, 10, 0]} mode={mode} />
                     {/* </Debug> */}
                 </Physics>
-                <OrbitControls makeDefault />
+                {/* <OrbitControls makeDefault /> */}
                 <Stats />
             </Canvas>
         </Suspense>
