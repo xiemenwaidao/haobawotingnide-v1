@@ -1,3 +1,4 @@
+import type { Quad, Triplet } from "@react-three/cannon";
 import type { Blog } from "types/microcms";
 
 /** htmlタグ削除 */
@@ -30,4 +31,30 @@ export const fetcher = async (url: string) => {
 
     const data = await response.json();
     return data;
+};
+
+export const tripletsAlmostEqual = (
+    t1: Triplet,
+    t2: Triplet,
+    epsilon: number
+): boolean => {
+    const distance = Math.sqrt(
+        Math.pow(t2[0] - t1[0], 2) +
+            Math.pow(t2[1] - t1[1], 2) +
+            Math.pow(t2[2] - t1[2], 2)
+    );
+    return distance < epsilon;
+};
+export const quadsAlmostEqual = (
+    q1: Quad,
+    q2: Quad,
+    epsilon: number
+): boolean => {
+    const distance = Math.sqrt(
+        Math.pow(q2[0] - q1[0], 2) +
+            Math.pow(q2[1] - q1[1], 2) +
+            Math.pow(q2[2] - q1[2], 2) +
+            Math.pow(q2[3] - q1[3], 2)
+    );
+    return distance < epsilon;
 };
