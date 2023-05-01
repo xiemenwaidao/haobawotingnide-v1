@@ -1,6 +1,5 @@
 import type { Quad, Triplet } from "@react-three/cannon";
 import { create } from "zustand";
-import { immer } from "zustand/middleware/immer";
 
 interface State {
     position: Triplet;
