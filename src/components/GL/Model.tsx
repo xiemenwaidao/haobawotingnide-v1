@@ -1,4 +1,5 @@
-import type { BoxProps, Triplet } from "@react-three/cannon";
+import { useThrottle } from "@hooks/useThrottle";
+import type { BoxProps, Quad, Triplet } from "@react-three/cannon";
 import { useBox } from "@react-three/cannon";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
@@ -29,6 +30,7 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
 
     const [boxPosition, setBoxPosition] = useState<Triplet>([0, 0, 0]);
 
+    // 物理演算を適用
     const [ref, api] = useBox(
         () => ({
             mass: 1,
@@ -44,7 +46,7 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
         useRef<Group>(null!)
     );
 
-    /** 物理設定 */
+    /** boxの判定を正確にする */
     const boxSize = useMemo(() => {
         const box = new Box3().setFromObject(nodes.kuang);
         const size = new Vector3();
@@ -62,17 +64,23 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
         }
     }, [props.mode]);
 
-    /**  */
+    /** 状態管理 */
     const { setPosition, setQuaternion } = useCubeStore();
+    // スロットル
+    const handlePositionChange = useThrottle((position: Triplet) => {
+        setPosition(position);
+        setBoxPosition(position);
+    }, 100);
+    const handleQuaternionChange = useThrottle((quaternion: Quad) => {
+        setQuaternion(quaternion);
+    }, 100);
     useEffect(() => {
-        const positionUnsubscribe = api.position.subscribe(position => {
-            setPosition(position);
-            setBoxPosition(position);
-        });
+        const positionUnsubscribe =
+            api.position.subscribe(handlePositionChange);
 
-        const quaternionUnsubscribe = api.quaternion.subscribe(quaternion => {
-            setQuaternion(quaternion);
-        });
+        const quaternionUnsubscribe = api.quaternion.subscribe(
+            handleQuaternionChange
+        );
 
         return () => {
             positionUnsubscribe();
@@ -80,6 +88,7 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
         };
     }, [api, setPosition, setQuaternion]);
 
+    /** 吹っ飛ばし機能 */
     const onClickHandler = () => {
         const target = new Vector3(0, 0, 0); // オブジェクトが向かうべきターゲット（画面の中心）
 
