@@ -45,7 +45,7 @@ export default function GL404() {
                     {/* </Debug> */}
                 </Physics>
                 {/* <OrbitControls makeDefault /> */}
-                <Stats />
+                {/* <Stats /> */}
             </Canvas>
         </Suspense>
     );

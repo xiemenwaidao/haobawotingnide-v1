@@ -1,6 +1,7 @@
 import { useHelper } from "@react-three/drei/native";
-import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import { epsilon } from "@utils/const";
+import { quadsAlmostEqual, tripletsAlmostEqual } from "@utils/helper";
+import { useCallback, useEffect, useRef } from "react";
 import { useCubeStore } from "stores/useGLStore";
 import { Quaternion, SpotLight, SpotLightHelper, Vector3 } from "three";
 
@@ -8,31 +9,62 @@ const Lights = () => {
     const ref = useRef<SpotLight>(null!);
     // useHelper(ref, SpotLightHelper);
 
+    // サイコロの情報を取得
     const cubePosition = useCubeStore(state => state.position);
     const cubeQuaternion = useCubeStore(state => state.quaternion);
 
-    const upFaceNormal = new Vector3(0, 1, 0).applyQuaternion(
-        new Quaternion(...cubeQuaternion)
-    );
+    // useEffect依存ハック
+    const prevCubePosition = useRef(cubePosition);
+    const prevCubeQuaternion = useRef(cubeQuaternion);
 
-    const lightOffset = new Vector3(2, 4, 2);
-    const lightPosition = new Vector3()
-        .addVectors(new Vector3(...cubePosition), upFaceNormal)
-        .add(lightOffset);
+    const updateLight = useCallback(() => {
+        // console.log("update light");
+        if (!ref.current) return;
 
-    useFrame(() => {
-        if (ref.current) {
-            ref.current.target.position.set(...cubePosition);
-            ref.current.target.updateMatrixWorld();
+        // サイコロの上面を算出
+        const upFaceNormal = new Vector3(0, 1, 0).applyQuaternion(
+            new Quaternion(...cubeQuaternion)
+        );
+
+        // 位置算出
+        const lightOffset = new Vector3(2, 4, 2);
+        const lightPosition = new Vector3()
+            .addVectors(new Vector3(...cubePosition), upFaceNormal)
+            .add(lightOffset);
+
+        ref.current.target.position.set(...cubePosition);
+        ref.current.position.set(...lightPosition.toArray());
+        ref.current.target.updateMatrixWorld();
+    }, [cubePosition, cubeQuaternion]);
+
+    useEffect(() => {
+        // console.log("use effect");
+
+        if (
+            !tripletsAlmostEqual(
+                prevCubePosition.current,
+                cubePosition,
+                epsilon
+            ) ||
+            !quadsAlmostEqual(
+                prevCubeQuaternion.current,
+                cubeQuaternion,
+                epsilon
+            )
+        ) {
+            // console.log("update light");
+            updateLight();
         }
-    });
+
+        prevCubePosition.current = cubePosition;
+        prevCubeQuaternion.current = cubeQuaternion;
+    }, [cubePosition, cubeQuaternion]);
 
     return (
         <>
             <ambientLight intensity={1.0} />
-            {/* <hemisphereLight intensity={0.35} /> */}
             <spotLight
-                position={lightPosition.toArray()}
+                position={[0, 0, 0]}
                 angle={0.3}
                 penumbra={1}
                 intensity={2}
