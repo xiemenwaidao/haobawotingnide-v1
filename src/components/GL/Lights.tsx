@@ -37,28 +37,17 @@ const Lights = () => {
         ref.current.target.updateMatrixWorld();
     }, [cubePosition, cubeQuaternion]);
 
+    // 最初の一発だけ
     useEffect(() => {
-        // console.log("use effect");
+        updateLight();
+    }, []);
 
-        if (
-            !tripletsAlmostEqual(
-                prevCubePosition.current,
-                cubePosition,
-                epsilon
-            ) ||
-            !quadsAlmostEqual(
-                prevCubeQuaternion.current,
-                cubeQuaternion,
-                epsilon
-            )
-        ) {
-            // console.log("update light");
-            updateLight();
-        }
+    useEffect(() => {
+        updateLight();
 
         prevCubePosition.current = cubePosition;
         prevCubeQuaternion.current = cubeQuaternion;
-    }, [cubePosition, cubeQuaternion]);
+    }, [cubePosition, cubeQuaternion, updateLight]);
 
     return (
         <>
