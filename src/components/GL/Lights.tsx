@@ -1,6 +1,7 @@
 import { useHelper } from "@react-three/drei/native";
 import { epsilon } from "@utils/const";
 import { quadsAlmostEqual, tripletsAlmostEqual } from "@utils/helper";
+import React from "react";
 import { useCallback, useEffect, useRef } from "react";
 import { useCubeStore } from "stores/useGLStore";
 import { Quaternion, SpotLight, SpotLightHelper, Vector3 } from "three";

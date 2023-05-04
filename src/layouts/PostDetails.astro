@@ -4,27 +4,20 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime";
-import type { Blog } from "types/microcms";
-import { load } from "cheerio";
-import hljs from "highlight.js";
+import type { CollectionEntry } from "astro:content";
+import slugify from "@utils/slugify";
 
 export interface Props {
-    post: Blog;
+    post: CollectionEntry<"blog">;
 }
 
 const { post } = Astro.props;
 
-const { id, title, description, publishedAt, tag, content } = post;
+const { title, description, ogImage, date, tags } = post.data;
 
-const ogUrl = new URL(`/og/${id}.png`, Astro.url.origin).href;
+const { Content } = await post.render();
 
-const $ = load(content);
-$("pre code").each((_, elm) => {
-    const result = hljs.highlightAuto($(elm).text());
-    $(elm).html(result.value);
-    $(elm).addClass("hljs");
-});
-const html = $.html();
+const ogUrl = new URL(`/og/${slugify(post.data)}.png`, Astro.url.origin).href;
 ---
 
 <Layout title={title} description={description} ogImage={ogUrl}>
@@ -43,17 +36,17 @@ const html = $.html();
     </div>
     <main id="main-content">
         <h1 class="post-title">{title}</h1>
-        <Datetime datetime={publishedAt} size="lg" className="my-2" />
+        <Datetime datetime={date} size="lg" className="my-2" />
         <article
             id="article"
             role="article"
             class="prose mx-auto mt-8 max-w-3xl"
         >
-            <div set:html={html} class="prose prose-lg max-w-none pt-10 pb-8" />
+            <Content />
         </article>
 
         <ul class="tags-container">
-            {tag.map(tag => <Tag tag={tag} />)}
+            {tags.map(tag => <Tag name={tag} />)}
         </ul>
     </main>
     <Footer />

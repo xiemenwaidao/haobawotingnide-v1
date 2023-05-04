@@ -3,25 +3,23 @@ import Posts from "@layouts/Posts.astro";
 import PostDetails from "@layouts/PostDetails.astro";
 import getPageNumbers from "@utils/getPageNumbers";
 import { SITE } from "@config";
-import type { Blog } from "types/microcms";
-import { MicroCMSUtils, microcmsFactory } from "@utils/microcms";
+import { CollectionEntry, getCollection } from "astro:content";
+import slugify from "@utils/slugify";
+import getSortedPosts from "@utils/getSortedPosts";
 
 export interface Props {
-    post: Blog;
+    post: CollectionEntry<"blog">;
 }
 
 export async function getStaticPaths() {
-    const blogResponse = await MicroCMSUtils.getAllContents({
-        getListFn: microcmsFactory.blogs.getList,
-    });
-    const blogs = blogResponse.contents;
+    const posts = await getCollection("blog", ({ data }) => !data.draft);
 
-    const postResult = blogs.map(blog => ({
-        params: { slug: blog.id },
-        props: { post: blog },
+    const postResult = posts.map(post => ({
+        params: { slug: slugify(post.data) },
+        props: { post },
     }));
 
-    const pagePaths = getPageNumbers(blogResponse.totalCount).map(pageNum => ({
+    const pagePaths = getPageNumbers(posts.length).map(pageNum => ({
         params: { slug: String(pageNum) },
     }));
 
@@ -31,12 +29,11 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 const { post } = Astro.props;
 
-const blogResponse = await MicroCMSUtils.getAllContents({
-    getListFn: microcmsFactory.blogs.getList,
-});
-const blogs = blogResponse.contents;
+const posts = await getCollection("blog");
 
-const totalPages = getPageNumbers(blogResponse.totalCount);
+const sortedPosts = getSortedPosts(posts);
+
+const totalPages = getPageNumbers(sortedPosts.length);
 
 const currentPage =
     slug && !isNaN(Number(slug)) && totalPages.includes(Number(slug))
@@ -45,7 +42,7 @@ const currentPage =
 const lastPost = currentPage * SITE.postPerPage;
 const startPost = lastPost - SITE.postPerPage;
 
-const paginatedPosts = blogs.slice(startPost, lastPost);
+const paginatedPosts = sortedPosts.slice(startPost, lastPost);
 ---
 
 {

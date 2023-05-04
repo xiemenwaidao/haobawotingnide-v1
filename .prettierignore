@@ -8,6 +8,7 @@
 !tsconfig.json
 !astro.config.mjs
 !package.json
+!frontmatter.json
 !.prettierrc
 !.eslintrc.js
 !README.md

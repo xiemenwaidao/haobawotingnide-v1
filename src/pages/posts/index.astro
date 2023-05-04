@@ -2,17 +2,17 @@
 import { SITE } from "@config";
 import Posts from "@layouts/Posts.astro";
 import getPageNumbers from "@utils/getPageNumbers";
+import getSortedPosts from "@utils/getSortedPosts";
 
-import { MicroCMSUtils, microcmsFactory } from "@utils/microcms";
+import { getCollection } from "astro:content";
 
-const blogResponse = await MicroCMSUtils.getAllContents({
-    getListFn: microcmsFactory.blogs.getList,
-});
-const blogs = blogResponse.contents;
+const posts = await getCollection("blog");
 
-const totalPages = getPageNumbers(blogResponse.totalCount);
+const sortedPosts = getSortedPosts(posts);
 
-const paginatedPosts = blogs.slice(0, SITE.postPerPage);
+const totalPages = getPageNumbers(sortedPosts.length);
+
+const paginatedPosts = sortedPosts.slice(0, SITE.postPerPage);
 ---
 
 <Posts

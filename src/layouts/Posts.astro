@@ -6,12 +6,13 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Card from "@components/Card";
 import LinkButton from "@components/LinkButton.astro";
-import type { Blog } from "types/microcms";
+import type { CollectionEntry } from "astro:content";
+import slugify from "@utils/slugify";
 
 export interface Props {
     pageNum: number;
     totalPages: number;
-    posts: Blog[];
+    posts: CollectionEntry<"blog">[];
     type: "posts" | "tags";
     tagId?: string;
 }
@@ -30,7 +31,11 @@ const pageDesc =
     <Header activeNav={type} />
     <Main pageTitle="Posts" pageDesc={pageDesc}>
         <ul>
-            {posts.map(blog => <Card href={`/posts/${blog.id}`} blog={blog} />)}
+            {
+                posts.map(({ data }) => (
+                    <Card href={`/posts/${slugify(data)}`} frontmatter={data} />
+                ))
+            }
         </ul>
     </Main>
 

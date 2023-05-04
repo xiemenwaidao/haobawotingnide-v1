@@ -1,6 +1,7 @@
 import satori from "satori";
 import sharp from "sharp";
 import OgImageStyle from "./OgImageStyle";
+import React from "react";
 
 async function getFontData() {
     const API = `https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700`;

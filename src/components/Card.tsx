@@ -1,14 +1,16 @@
 import type { Blog } from "types/microcms";
 import Datetime from "./Datetime";
+import React from "react";
+import type { BlogFrontmatter } from "@content/_schemas";
 
 export interface Props {
     href?: string;
-    blog: Blog;
+    frontmatter: BlogFrontmatter;
     secHeading?: boolean;
 }
 
-export default function Card({ href, blog, secHeading = true }: Props) {
-    const { title, publishedAt, description } = blog;
+export default function Card({ href, frontmatter, secHeading = true }: Props) {
+    const { title, date, description } = frontmatter;
 
     return (
         <li className="my-6">
@@ -27,7 +29,7 @@ export default function Card({ href, blog, secHeading = true }: Props) {
                     </h3>
                 )}
             </a>
-            <Datetime datetime={publishedAt} />
+            <Datetime datetime={date} />
             <p>{description}</p>
         </li>
     );
