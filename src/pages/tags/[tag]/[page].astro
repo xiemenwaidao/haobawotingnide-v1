@@ -5,6 +5,7 @@ import getPageNumbers from "@utils/getPageNumbers";
 import { getCollection } from "astro:content";
 import getUniqueTags from "@utils/getUniqueTags";
 import getPostsByTag from "@utils/getPostsByTag";
+import getSortedPosts from "@utils/getSortedPosts";
 
 interface Props {
     tag: string;
@@ -35,14 +36,15 @@ const { tag, page } = Astro.params;
 
 const posts = await getCollection("blog");
 const tagPosts = getPostsByTag(posts, tag!);
+const sortedPosts = getSortedPosts(tagPosts);
 
-const totalPages = getPageNumbers(tagPosts.length);
+const totalPages = getPageNumbers(sortedPosts.length);
 
 const currentPage = Number(page);
 const lastPost = currentPage * SITE.postPerPage;
 const startPost = lastPost - SITE.postPerPage;
 
-const paginatedPosts = tagPosts.slice(startPost, lastPost);
+const paginatedPosts = sortedPosts.slice(startPost, lastPost);
 ---
 
 <Posts

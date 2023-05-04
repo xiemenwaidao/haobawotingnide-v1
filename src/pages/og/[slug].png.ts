@@ -1,25 +1,23 @@
 /** @see https://github.com/70-10/blog/blob/main/src/pages/og/%5Bslug%5D.png.ts */
 import type { APIContext } from "astro";
 import { getOgImage } from "@components/OgImage";
-import { MicroCMSUtils, microcmsFactory } from "@utils/microcms";
+import { getCollection } from "astro:content";
+import slugify from "@utils/slugify";
 
 export async function getStaticPaths() {
-    const blogResponse = await MicroCMSUtils.getAllContents({
-        getListFn: microcmsFactory.blogs.getList,
-    });
-    const blogs = blogResponse.contents;
+    const posts = await getCollection("blog");
 
-    return blogs.map(blog => ({
-        params: { id: blog.id },
-        props: { title: blog.title },
+    return posts.map(({ data }) => ({
+        params: { slug: slugify(data) },
+        props: { title: data.title },
     }));
 }
 
 export async function get({ params, props }: APIContext) {
-    const { id } = params;
+    const { slug } = params;
     const { title } = props;
 
-    if (!id) {
+    if (!slug) {
         throw new Error("Id not found");
     }
 
