@@ -3,6 +3,7 @@ import type { BoxProps, Quad, Triplet } from "@react-three/cannon";
 import { useBox } from "@react-three/cannon";
 import { useGLTF } from "@react-three/drei";
 import { lightParams, darkParams } from "@utils/const";
+import React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useCubeStore } from "stores/useGLStore";
 import { Box3, Color, Vector3 } from "three";

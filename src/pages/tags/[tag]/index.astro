@@ -1,0 +1,42 @@
+---
+import { SITE } from "@config";
+import Posts from "@layouts/Posts.astro";
+import getPageNumbers from "@utils/getPageNumbers";
+import getPostsByTag from "@utils/getPostsByTag";
+import { getCollection } from "astro:content";
+import getUniqueTags from "@utils/getUniqueTags";
+
+export interface Props {
+    tag: string;
+}
+
+export async function getStaticPaths() {
+    const posts = await getCollection("blog");
+    const tags = getUniqueTags(posts);
+
+    return tags.map(tag => {
+        return {
+            params: { tag },
+            props: { tag },
+        };
+    });
+}
+
+const { tag } = Astro.props;
+
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+
+const tagPosts = getPostsByTag(posts, tag);
+
+const totalPages = getPageNumbers(tagPosts.length);
+
+const paginatedPosts = tagPosts.slice(0, SITE.postPerPage);
+---
+
+<Posts
+    posts={paginatedPosts}
+    pageNum={1}
+    totalPages={totalPages.length}
+    type="tags"
+    tagId={tag}
+/>

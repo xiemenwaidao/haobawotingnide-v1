@@ -1,0 +1,54 @@
+---
+import { SITE } from "@config";
+import Posts from "@layouts/Posts.astro";
+import getPageNumbers from "@utils/getPageNumbers";
+import { getCollection } from "astro:content";
+import getUniqueTags from "@utils/getUniqueTags";
+import getPostsByTag from "@utils/getPostsByTag";
+
+interface Props {
+    tag: string;
+}
+
+export async function getStaticPaths() {
+    const posts = await getCollection("blog");
+    const tags = getUniqueTags(posts);
+
+    const paths = await Promise.all(
+        tags.map(async tag => {
+            const posts = await getCollection(
+                "blog",
+                ({ data }) => !data.draft
+            );
+            const tagPosts = getPostsByTag(posts, tag);
+
+            return getPageNumbers(tagPosts.length).map(pageNum => ({
+                params: { tag: tag, page: String(pageNum) },
+            }));
+        })
+    );
+
+    return paths.flat();
+}
+
+const { tag, page } = Astro.params;
+
+const posts = await getCollection("blog");
+const tagPosts = getPostsByTag(posts, tag!);
+
+const totalPages = getPageNumbers(tagPosts.length);
+
+const currentPage = Number(page);
+const lastPost = currentPage * SITE.postPerPage;
+const startPost = lastPost - SITE.postPerPage;
+
+const paginatedPosts = tagPosts.slice(startPost, lastPost);
+---
+
+<Posts
+    posts={paginatedPosts}
+    pageNum={currentPage}
+    totalPages={totalPages.length}
+    type="tags"
+    tagId={tag}
+/>

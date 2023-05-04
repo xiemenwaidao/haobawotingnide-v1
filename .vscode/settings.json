@@ -1,0 +1,7 @@
+{
+    "[markdown]": {
+    },
+    "[json]": {
+        "editor.formatOnSave": true
+    },
+}

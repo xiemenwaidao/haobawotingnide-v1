@@ -1,0 +1,91 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "default",
+      "pageBundle": false,
+      "previewPath": null,
+      "template": "[[workspace]]/.frontmatter/templates/blog.md",
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "title": "Description",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "title": "postSlug",
+          "name": "postSlug",
+          "type": "string"
+        },
+        {
+          "title": "featured",
+          "name": "featured",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "title": "公開日時",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true
+        },
+        {
+          "title": "更新日時",
+          "name": "lastmod",
+          "type": "datetime",
+          "isModifiedDate": true
+        },
+        {
+          "title": "下書き",
+          "name": "draft",
+          "type": "draft"
+        },
+        {
+          "title": "Tags",
+          "name": "tags",
+          "type": "tags"
+        }
+      ]
+    }
+  ],
+  "frontMatter.framework.id": "astro",
+  "frontMatter.content.publicFolder": "public",
+  "frontMatter.content.autoUpdateDate": true,
+  "frontMatter.preview.host": "http://localhost:3000",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "blog",
+      "path": "[[workspace]]/src/content/blog"
+    },
+    {
+      "title": "page",
+      "path": "[[workspace]]/src/pages"
+    }
+  ],
+  "frontMatter.taxonomy.tags": [
+    "Blog",
+    "HeadlessCMS",
+    "JavaScript",
+    "ReactJS",
+    "Styled-Components",
+    "TailwindCSS",
+    "astro-paper",
+    "configuration",
+    "docs",
+    "forestry-cms",
+    "release"
+  ],
+  "frontMatter.taxonomy.categories": []
+//   "frontMatter.taxonomy.customTaxonomy": [
+//     {
+//       "id": "custom",
+//       "options": []
+//     }
+//   ]
+}

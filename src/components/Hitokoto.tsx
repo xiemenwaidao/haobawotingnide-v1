@@ -1,4 +1,5 @@
 import { fetcher } from "@utils/helper";
+import React from "react";
 import useSWR from "swr";
 import type { HitokotoResponse } from "types/common";
 

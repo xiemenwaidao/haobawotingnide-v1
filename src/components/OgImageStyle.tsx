@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function OgImageStyle({ text }: { text: string }) {
     return (
         <div

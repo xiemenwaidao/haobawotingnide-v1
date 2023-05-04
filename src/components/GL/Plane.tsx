@@ -1,5 +1,6 @@
 import type { PlaneProps } from "@react-three/cannon";
 import { usePlane } from "@react-three/cannon";
+import React from "react";
 import { useRef } from "react";
 import type { Mesh } from "three";
 
