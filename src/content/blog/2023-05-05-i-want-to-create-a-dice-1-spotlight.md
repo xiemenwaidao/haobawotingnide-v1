@@ -4,15 +4,15 @@ description: サイコロに追従するスポットライトを実装した話�
 draft: false
 featured: false
 date: 2023-05-01T15:44:00.000Z
-lastmod: 2023-05-05T05:18:49.609Z
+lastmod: 2023-05-05T06:23:33.987Z
 tags:
     - Blender
     - JavaScript
     - React-three-fiber
-    - React.js
-    - Three.js
+    - ReactJs
+    - ThreeJs
     - Zustand
-    - cannon.js
+    - cannonJs
 postSlug: i-want-to-create-a-dice-1-spotlight
 ---
 

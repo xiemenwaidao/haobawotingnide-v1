@@ -4,14 +4,14 @@ description: Worksページを作ったので、制作物の説明を書きま�
 draft: false
 featured: false
 date: 2023-04-25T23:08:00.000Z
-lastmod: 2023-05-05T03:40:18.342Z
+lastmod: 2023-05-05T06:24:49.305Z
 tags:
     - Blender
     - JavaScript
-    - React.js
-    - Three.js
+    - ReactJs
+    - ThreeJs
     - Vercel
-    - Vue.js
+    - VueJs
     - React-three-fiber
 postSlug: created-a-works-page
 ---

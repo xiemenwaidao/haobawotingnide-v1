@@ -69,18 +69,17 @@
     }
   ],
   "frontMatter.taxonomy.tags": [
-    "Astro.js",
+    "Astro",
     "Blender",
     "JavaScript",
     "MicroCMS",
     "React-three-fiber",
-    "React.js",
-    "Three.js",
+    "ReactJs",
+    "ThreeJs",
     "Vercel",
-    "Vue.js",
+    "VueJs",
     "WordPress",
     "Zustand",
-    "cannon.js",
     "chrome-extension"
   ],
   "frontMatter.taxonomy.categories": [],

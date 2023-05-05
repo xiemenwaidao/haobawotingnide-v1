@@ -4,11 +4,11 @@ description: Plasmoって知ってっか？なんでも拡張機能がカンタ�
 draft: false
 featured: false
 date: 2023-04-19T08:58:00.000Z
-lastmod: 2023-05-05T05:28:45.969Z
+lastmod: 2023-05-05T06:25:04.720Z
 tags:
     - chrome-extension
     - JavaScript
-    - React.js
+    - ReactJs
 postSlug: implementing-official-chrome-extension-tutorial-with-plasmo
 ---
 
