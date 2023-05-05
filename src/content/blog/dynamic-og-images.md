@@ -3,12 +3,10 @@ date: 2022-12-28T04:59:04.866Z
 title: Dynamic OG image generation in AstroPaper blog posts
 postSlug: dynamic-og-image-generation-in-astropaper-blog-posts
 featured: false
-draft: false
-tags:
-    - docs
-    - release
+draft: true
+tags: []
 description: New feature in AstroPaper v1.4.0, introducing dynamic OG image generation for blog posts.
-lastmod: 2023-05-04T04:05:24.021Z
+lastmod: 2023-05-05T05:20:45.504Z
 ---
 
 New feature in AstroPaper v1.4.0, introducing dynamic OG image generation for blog posts.

@@ -3,11 +3,10 @@ date: 2022-09-26T12:13:24Z
 title: Predefined color schemes
 postSlug: predefined-color-schemes
 featured: false
-draft: false
-tags:
-    - JavaScript
+draft: true
+tags: []
 description: Some of the well-crafted, predefined color schemes for AstroPaper blog theme.
-lastmod: 2023-05-04T01:55:11.583Z
+lastmod: 2023-05-05T05:20:54.331Z
 ---
 
 I've crafted some predefined color schemes for this AstroPaper blog theme. You can replace these color schemes with the original ones.

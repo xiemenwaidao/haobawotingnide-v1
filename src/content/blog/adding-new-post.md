@@ -3,11 +3,10 @@ date: 2022-09-23T15:22:00Z
 title: Adding new posts in AstroPaper theme
 postSlug: adding-new-posts-in-astropaper-theme
 featured: true
-draft: false
-tags:
-    - docs
+draft: true
+tags: []
 description: Some rules & recommendations for creating or adding new posts using AstroPaper theme.
-lastmod: 2023-05-04T03:59:47.376Z
+lastmod: 2023-05-05T05:21:09.113Z
 ---
 
 Here are some rules/recommendations, tips & ticks for creating new posts in AstroPaper blog theme.
