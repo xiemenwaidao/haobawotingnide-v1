@@ -3,10 +3,10 @@ date: 2023-01-30T15:57:52.737Z
 title: AstroPaper 2.0
 postSlug: astro-paper-2
 featured: true
-tags:
-    - release
+tags: []
 description: AstroPaper with the enhancements of Astro v2. Type-safe markdown contents, bug fixes and better dev experience etc.
-lastmod: 2023-05-04T04:00:05.153Z
+lastmod: 2023-05-05T05:20:36.495Z
+draft: true
 ---
 
 Astro 2.0 has been released with some cool features, breaking changes, DX improvements, better error overlay and so on. AstroPaper takes advantage of those cool features, especially Content Collections API.

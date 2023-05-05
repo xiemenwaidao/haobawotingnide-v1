@@ -2,11 +2,10 @@
 title: Tailwind Typography Plugin
 date: 2022-07-05T02:05:51Z
 featured: false
-draft: false
-tags:
-    - JavaScript
+draft: true
+tags: []
 description: "EXAMPLE POST: About Tailwind Typography Plugin and how you can use it effectively."
-lastmod: 2023-05-04T03:59:03.156Z
+lastmod: 2023-05-05T05:21:28.364Z
 ---
 
 > This article is from [TailwindLabs](https://tailwindcss-typography.vercel.app/). I put this article to demonstrate how you can write blog posts/articles using AstroPaper theme.

@@ -3,12 +3,10 @@ date: 2022-09-25T15:20:35Z
 title: Customizing AstroPaper theme color schemes
 postSlug: ""
 featured: false
-draft: false
-tags:
-    - JavaScript
-    - docs
+draft: true
+tags: []
 description: How you can enable/disable light & dark mode; and customize color schemes of AstroPaper theme.
-lastmod: 2023-05-04T03:58:34.102Z
+lastmod: 2023-05-05T05:21:01.314Z
 ---
 
 This post will explain how you can enable/disable light & dark mode for the website. Moreover, you'll learn how you can customize color schemes of the entire website.
