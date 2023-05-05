@@ -1,5 +1,4 @@
 import type { Quad, Triplet } from "@react-three/cannon";
-import type { Blog } from "types/microcms";
 
 /** htmlタグ削除 */
 export const removeHtmlTag = (text: string) => {
