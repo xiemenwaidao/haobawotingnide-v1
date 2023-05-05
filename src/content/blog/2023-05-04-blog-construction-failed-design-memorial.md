@@ -4,9 +4,9 @@ description: ""
 draft: true
 featured: false
 date: 2023-04-10T08:03:58.000Z
-lastmod: 2023-05-05T05:20:12.334Z
+lastmod: 2023-05-05T06:25:53.453Z
 tags:
-    - Astro.js
+    - AstroJs
     - WordPress
 postSlug: blog-construction-failed-design-memorial
 ---

@@ -4,9 +4,9 @@ description: 新しく作った当ブログについての制作経緯や、使�
 draft: false
 featured: false
 date: 2023-04-09T10:35:00.000Z
-lastmod: 2023-05-05T01:06:55.033Z
+lastmod: 2023-05-05T06:24:18.211Z
 tags:
-    - Astro.js
+    - Astro
     - MicroCMS
 postSlug: i-made-a-blog
 ---
