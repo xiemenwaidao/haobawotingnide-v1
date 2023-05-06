@@ -32,16 +32,17 @@ export default function Datetime({ datetime, size = "sm", className }: Props) {
 const FormattedDatetime = ({ datetime }: { datetime: string | Date }) => {
     const myDatetime = new Date(datetime);
 
-    const date = myDatetime.toLocaleDateString([], {
+    const date = new Intl.DateTimeFormat("ja-JP", {
         year: "numeric",
         month: "long",
         day: "numeric",
-    });
+    }).format(myDatetime);
 
-    const time = myDatetime.toLocaleTimeString([], {
+    const time = new Intl.DateTimeFormat("ja-JP", {
         hour: "2-digit",
         minute: "2-digit",
-    });
+        timeZone: "Asia/Tokyo",
+    }).format(myDatetime);
 
     return (
         <>
