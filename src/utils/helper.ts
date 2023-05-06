@@ -1,4 +1,5 @@
 import type { Quad, Triplet } from "@react-three/cannon";
+import type { CollectionEntry } from "astro:content";
 
 /** htmlタグ削除 */
 export const removeHtmlTag = (text: string) => {
@@ -6,12 +7,6 @@ export const removeHtmlTag = (text: string) => {
     // .trim()
     // .replace(/\s+/g, "")
 };
-
-/** */
-// export const getEyecatchPath = (eyecatch: Blog["eyecatch"]) => {
-//     const dummyPath = import.meta.env.DUMMY_IMG_PATH as string;
-//     return eyecatch ? eyecatch.url : dummyPath;
-// };
 
 export const fetcher = async (url: string) => {
     const response = await fetch(url, {
@@ -32,6 +27,7 @@ export const fetcher = async (url: string) => {
     return data;
 };
 
+/** vec3用 */
 export const tripletsAlmostEqual = (
     t1: Triplet,
     t2: Triplet,
@@ -44,6 +40,8 @@ export const tripletsAlmostEqual = (
     );
     return distance < epsilon;
 };
+
+/** vec4用 */
 export const quadsAlmostEqual = (
     q1: Quad,
     q2: Quad,
@@ -56,4 +54,17 @@ export const quadsAlmostEqual = (
             Math.pow(q2[3] - q1[3], 2)
     );
     return distance < epsilon;
+};
+
+/** 下書き記事を開発環境で表示させる */
+export const toggleDisplayDraft = ({
+    data,
+}: {
+    data: CollectionEntry<"blog">["data"];
+}) => {
+    if (process.env.MODE === "production") {
+        return !data.draft;
+    }
+
+    return true;
 };

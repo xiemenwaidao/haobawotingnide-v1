@@ -6,6 +6,7 @@ import getPostsByTag from "@utils/getPostsByTag";
 import { getCollection } from "astro:content";
 import getUniqueTags from "@utils/getUniqueTags";
 import getSortedPosts from "@utils/getSortedPosts";
+import { toggleDisplayDraft } from "@utils/helper";
 
 export interface Props {
     tag: string;
@@ -25,7 +26,7 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.props;
 
-const posts = await getCollection("blog", ({ data }) => !data.draft);
+const posts = await getCollection("blog", toggleDisplayDraft);
 
 const tagPosts = getPostsByTag(posts, tag);
 const sortedPosts = getSortedPosts(tagPosts);
