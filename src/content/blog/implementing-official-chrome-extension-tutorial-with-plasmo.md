@@ -4,7 +4,7 @@ description: Plasmoって知ってっか？なんでも拡張機能がカンタ�
 draft: false
 featured: false
 date: 2023-04-19T08:58:00.000Z
-lastmod: 2023-05-05T06:25:04.720Z
+lastmod: 2023-05-06T07:14:44.016Z
 tags:
     - chrome-extension
     - JavaScript
@@ -16,6 +16,8 @@ postSlug: implementing-official-chrome-extension-tutorial-with-plasmo
 
 Chrome 用の拡張機能を作ってみたくなったので[公式チュートリアル](https://developer.chrome.com/docs/extensions/mv3/getstarted/)をやってみました。<br>
 今回は[Plasmo](https://www.plasmo.com/)というブラウザ拡張機能開発用のフレームワークを使って実装していきます。
+
+## 目次
 
 ## Plasmo とは
 

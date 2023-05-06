@@ -4,7 +4,7 @@ description: ""
 draft: true
 featured: false
 date: 2023-04-10T08:03:58.000Z
-lastmod: 2023-05-05T06:25:53.453Z
+lastmod: 2023-05-06T07:14:21.135Z
 tags:
     - AstroJs
     - WordPress
@@ -13,6 +13,8 @@ postSlug: blog-construction-failed-design-memorial
 
 当ブログを立ち上げる際に結局ボツになった技術スタックをこの記事で供養したいと思います。
 途中まで開発をゴリゴリ進めていて勉強になった点も多々あるため、記録としてここに残しておきます。
+
+## 目次
 
 ## 構成
 
