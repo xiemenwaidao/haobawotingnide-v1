@@ -34,7 +34,9 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
     const [ref, api] = useBox(
         () => ({
             mass: 1,
-            friction: 0.3, // 摩擦係数
+            material: {
+                // friction: 0.1, // 摩擦係数,大きいほど摩擦が強い
+            },
             position: [0, 10, 0],
             rotation: [
                 Math.PI * Math.random(),

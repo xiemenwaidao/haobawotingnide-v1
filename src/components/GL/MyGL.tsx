@@ -11,7 +11,7 @@ import { darkParams, lightParams } from "@utils/const";
 import Lights from "./Lights";
 import React from "react";
 
-export default function GL404() {
+export default function MyGL() {
     const mode = useMode();
 
     return (
