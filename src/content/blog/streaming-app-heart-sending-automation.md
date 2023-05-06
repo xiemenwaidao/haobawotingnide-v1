@@ -4,13 +4,15 @@ description: 配信アプリのハート送信機能の自動化について調�
 draft: false
 featured: false
 date: 2023-04-15T00:31:00.000Z
-lastmod: 2023-05-05T01:06:12.951Z
+lastmod: 2023-05-06T07:15:07.674Z
 tags:
     - JavaScript
 postSlug: streaming-app-heart-sending-automation
 ---
 
 <img src="/assets/img/posts/youtube_hart_mozaiku.png" title="YouTube Liveで大量のハート送信が行われている様子" alt="YouTube Liveで大量のハート送信が行われている様子" width="1024" height="607" >
+
+## 目次
 
 ## はじめに
 
