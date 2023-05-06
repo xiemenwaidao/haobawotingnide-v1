@@ -52,6 +52,31 @@
           "type": "tags"
         }
       ]
+    },
+    {
+      "name": "about",
+      "pageBundle": false,
+      "previewPath": null,
+      "fields": [
+        {
+          "title": "contentTypes",
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "title": "公開日時",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true
+        },
+        {
+          "title": "更新日時",
+          "name": "lastmod",
+          "type": "datetime",
+          "isModifiedDate": true
+        }
+      ]
     }
   ],
   "frontMatter.framework.id": "astro",
@@ -61,18 +86,24 @@
   "frontMatter.content.pageFolders": [
     {
       "title": "blog",
-      "path": "[[workspace]]/src/content/blog"
+      "filePrefix": null,
+      "path": "[[workspace]]/src/content/blog",
+      "previewPath": "/posts/"
     },
     {
-      "title": "page",
-      "path": "[[workspace]]/src/pages"
+      "title": "about",
+      "filePrefix": null,
+      "path": "[[workspace]]/src/content/about",
+      "previewPath": "/"
     }
   ],
   "frontMatter.taxonomy.tags": [
-    "Astro",
+    "AstroJs",
     "Blender",
+    "CannonJs",
+    "ChatGPT",
+    "Front-Matter-CMS",
     "JavaScript",
-    "MicroCMS",
     "React-three-fiber",
     "ReactJs",
     "ThreeJs",
@@ -80,7 +111,8 @@
     "VueJs",
     "WordPress",
     "Zustand",
-    "chrome-extension"
+    "chrome-extension",
+    "microCMS"
   ],
   "frontMatter.taxonomy.categories": [],
   "frontMatter.content.snippets": {

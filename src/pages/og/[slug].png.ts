@@ -3,9 +3,10 @@ import type { APIContext } from "astro";
 import { getOgImage } from "@components/OgImage";
 import { getCollection } from "astro:content";
 import slugify from "@utils/slugify";
+import { toggleDisplayDraft } from "@utils/helper";
 
 export async function getStaticPaths() {
-    const posts = await getCollection("blog", ({ data }) => !data.draft);
+    const posts = await getCollection("blog", toggleDisplayDraft);
 
     return posts.map(({ data }) => ({
         params: { slug: slugify(data) },
