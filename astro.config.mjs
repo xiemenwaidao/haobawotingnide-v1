@@ -37,6 +37,13 @@ export default defineConfig({
                     summary: str => `${str}を開く`,
                 },
             ],
+            // [
+            //     remarkCollapse,
+            //     {
+            //         test: "別の実装",
+            //         summary: str => `${str}を開く`,
+            //     },
+            // ],
         ],
         shikiConfig: {
             theme: "one-dark-pro",
