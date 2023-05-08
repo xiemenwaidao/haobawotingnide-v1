@@ -40,13 +40,19 @@ export default function MyGL() {
                 <Lights />
 
                 <Physics broadphase="SAP">
-                    {/* <Debug color="red" scale={1.1}> */}
-                    <Plane color={mode === "dark" ? "#212737" : "#f5f3ff"} />
-                    <Cube position={[0, 10, 0]} mode={mode} />
-                    {/* </Debug> */}
+                    <Debug color="red" scale={1.1}>
+                        <Plane
+                            color={
+                                mode === "dark"
+                                    ? darkParams.bgColor
+                                    : lightParams.bgColor
+                            }
+                        />
+                        <Cube position={[0, 3, 0]} mode={mode} />
+                    </Debug>
                 </Physics>
-                {/* <OrbitControls makeDefault /> */}
-                {/* <Stats /> */}
+                <OrbitControls makeDefault />
+                <Stats />
             </Canvas>
         </Suspense>
     );
