@@ -7,7 +7,10 @@ import type { Mesh } from "three";
 const Plane = (props: PlaneProps & { color: string }) => {
     const [ref] = usePlane(
         () => ({
-            material: { friction: 0.1 },
+            material: {
+                friction: 0.2,
+                restitution: 0.2, // 反発係数
+            },
             rotation: [-Math.PI / 2, 0, 0],
             ...props,
         }),
