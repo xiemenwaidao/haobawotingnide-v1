@@ -1,12 +1,13 @@
 import { useThrottle } from "@hooks/useThrottle";
 import type { BoxProps, Quad, Triplet } from "@react-three/cannon";
-import { useBox } from "@react-three/cannon";
+import { useBox, usePointToPointConstraint } from "@react-three/cannon";
 import { useGLTF } from "@react-three/drei";
 import { lightParams, darkParams } from "@utils/const";
+import { getRandomSign } from "@utils/helper";
 import React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useCubeStore } from "stores/useGLStore";
-import { Box3, Color, Vector3 } from "three";
+import { Box3, Color, type Mesh, Vector3 } from "three";
 import type { Group } from "three";
 import type { GLTF } from "three-stdlib";
 
@@ -31,13 +32,15 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
     const [boxPosition, setBoxPosition] = useState<Triplet>([0, 0, 0]);
 
     // 物理演算を適用
-    const [ref, api] = useBox(
+    const [boxRef, boxApi] = useBox(
         () => ({
             mass: 1,
             material: {
-                // friction: 0.1, // 摩擦係数,大きいほど摩擦が強い
+                friction: 0.1, // 摩擦係数,大きいほど摩擦が強い
+                restitution: 0.3, // 反発係数
             },
-            position: [0, 10, 0],
+            // angularDamping: 0.1, // 角速度に対するダンピング（減衰）係数
+            // linearDamping: 0.9, // 速度に対する線形ダンピング（減衰）係数
             rotation: [
                 Math.PI * Math.random(),
                 Math.PI * Math.random(),
@@ -54,6 +57,7 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
         const box = new Box3().setFromObject(nodes.kuang);
         const size = new Vector3();
         box.getSize(size);
+
         // return [size.x, size.y, size.z];
         return size.toArray();
     }, [nodes.kuang]);
@@ -79,9 +83,9 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
     }, 100);
     useEffect(() => {
         const positionUnsubscribe =
-            api.position.subscribe(handlePositionChange);
+            boxApi.position.subscribe(handlePositionChange);
 
-        const quaternionUnsubscribe = api.quaternion.subscribe(
+        const quaternionUnsubscribe = boxApi.quaternion.subscribe(
             handleQuaternionChange
         );
 
@@ -89,42 +93,33 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
             positionUnsubscribe();
             quaternionUnsubscribe();
         };
-    }, [api, setPosition, setQuaternion]);
+    }, [boxApi, setPosition, setQuaternion]);
 
     /** 吹っ飛ばし機能 */
     const onClickHandler = () => {
-        const target = new Vector3(0, 0, 0); // オブジェクトが向かうべきターゲット（画面の中心）
+        // スケーリングファクターを追加して、トルクの大きさを調整
+        const torqueScalingFactor = 180;
+        // キューブの上方向ベクトル
+        const cubeUpDirection = new Vector3(0, 1, 0);
 
-        // オブジェクトの位置からターゲットへの方向ベクトルを計算
-        const direction = target.clone().sub(new Vector3(...boxPosition));
-        const n = direction.clone().setY(Math.abs(direction.y)).normalize();
+        // キューブの位置から [0, 0, 0] への方向ベクトルを計算
+        const directionToOrigin = new Vector3(...boxPosition)
+            .negate()
+            .normalize();
 
-        // 衝撃力の大きさ
-        const forceMagnitude = 3.5;
+        // トルクを計算（外積）
+        const torque = cubeUpDirection
+            .clone()
+            .cross(directionToOrigin)
+            .normalize() // トルクベクトルを正規化
+            .multiplyScalar(torqueScalingFactor)
+            .toArray() as Triplet;
 
-        // 衝撃力を方向ベクトルに適用
-        const impulse: Triplet = [
-            forceMagnitude * n.x,
-            forceMagnitude * n.y,
-            forceMagnitude * n.z,
-        ];
-
-        // トルクの値をランダムに設定
-        const torque: Triplet = [
-            (Math.random() - 0.5) * Math.PI,
-            (Math.random() - 0.5) * Math.PI,
-            (Math.random() - 0.5) * Math.PI,
-        ];
-
-        // console.log(new Vector3(...impulse));
-
-        const worldPoint: Triplet = [0, 0, 0];
-        api.applyImpulse(impulse, worldPoint);
-        api.applyTorque(torque);
+        boxApi.applyTorque(torque);
     };
 
     return (
-        <group ref={ref} onClick={onClickHandler}>
+        <group ref={boxRef} onClick={onClickHandler}>
             <group position={[0, 0, 0]}>
                 <mesh
                     castShadow
