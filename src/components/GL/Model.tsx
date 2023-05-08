@@ -99,6 +99,8 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
     const onClickHandler = () => {
         // スケーリングファクターを追加して、トルクの大きさを調整
         const torqueScalingFactor = 180;
+        //
+        const torqueWeight = 0.9;
         // キューブの上方向ベクトル
         const cubeUpDirection = new Vector3(0, 1, 0);
 
@@ -110,6 +112,13 @@ const Model = (props: BoxProps & { mode: "dark" | "light" }) => {
         // トルクを計算（外積）
         const torque = cubeUpDirection
             .clone()
+            .add(
+                new Vector3(
+                    (Math.random() - 0.5) * torqueWeight,
+                    (Math.random() - 0.5) * torqueWeight,
+                    (Math.random() - 0.5) * torqueWeight
+                )
+            )
             .cross(directionToOrigin)
             .normalize() // トルクベクトルを正規化
             .multiplyScalar(torqueScalingFactor)
