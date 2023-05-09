@@ -64,9 +64,9 @@
           "type": "string"
         },
         {
-            "title": "layout",
-            "name": "layout",
-            "type": "string"
+          "title": "layout",
+          "name": "layout",
+          "type": "string"
         },
         {
           "title": "公開日時",
@@ -131,9 +131,9 @@
       "body": "<a href=\"\" target=\"_blank\"><img src=\"[[mediaUrl]]\" alt=\"[[alt]]\" title=\"[[title]]\" width=\"[[mediaWidth]]\" height=\"[[mediaHeight]]\" ></a>",
       "isMediaSnippet": true
     },
-    "<br>": {
+    "<br/>": {
       "description": "改行",
-      "body": "<br>",
+      "body": "<br/>",
       "fields": []
     }
   }
