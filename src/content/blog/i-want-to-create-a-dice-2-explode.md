@@ -2,9 +2,9 @@
 title: サイコロを作りたい（2）吹き飛ばす
 description: サイコロを吹き飛ばす実装をしていきます。
 draft: false
-featured: false
+featured: true
 date: 2023-05-08T15:21:50.990Z
-lastmod: 2023-05-08T15:37:36.254Z
+lastmod: 2023-05-09T14:55:07.956Z
 tags:
     - CannonJs
     - JavaScript

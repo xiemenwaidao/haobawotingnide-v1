@@ -4,14 +4,14 @@ description: サイコロシーンの背景やマテリアルのダークモー�
 draft: false
 featured: false
 date: 2023-05-09T05:46:15.051Z
-lastmod: 2023-05-09T05:46:18.614Z
+lastmod: 2023-05-09T14:55:21.735Z
 tags:
     - JavaScript
     - React-three-fiber
     - ReactJs
     - ThreeJs
     - AstroJs
-postSlug: i-want-to-make-a-dice-3-with-dark-mode-support
+postSlug: i-want-to-create-a-dice-3-with-dark-mode-support
 ---
 
 <img src="/assets/img/posts/logo_cube_potsuri.png" title="ロゴを立方体にしたもの" alt="ロゴを立方体にしたもの" width="1024" height="527" >

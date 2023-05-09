@@ -2,9 +2,9 @@
 title: サイコロを作りたい（1）スポットライト
 description: サイコロに追従するスポットライトを実装した話。
 draft: false
-featured: false
+featured: true
 date: 2023-05-01T15:44:00.000Z
-lastmod: 2023-05-06T07:14:33.345Z
+lastmod: 2023-05-09T15:00:30.715Z
 tags:
     - Blender
     - CannonJs
