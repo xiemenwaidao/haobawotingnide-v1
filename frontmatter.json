@@ -64,6 +64,11 @@
           "type": "string"
         },
         {
+            "title": "layout",
+            "name": "layout",
+            "type": "string"
+        },
+        {
           "title": "公開日時",
           "name": "date",
           "type": "datetime",
@@ -93,7 +98,7 @@
     {
       "title": "about",
       "filePrefix": null,
-      "path": "[[workspace]]/src/content/about",
+      "path": "[[workspace]]/src/pages/about",
       "previewPath": "/"
     }
   ],

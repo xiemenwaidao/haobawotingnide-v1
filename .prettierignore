@@ -11,4 +11,5 @@
 !frontmatter.json
 !.prettierrc
 !.eslintrc.js
+!tailwind.config.*
 !README.md
