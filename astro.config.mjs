@@ -11,22 +11,6 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
     site: SITE.website,
-    integrations: [
-        tailwind({
-            config: {
-                applyBaseStyles: false,
-            },
-        }),
-        react(),
-        sitemap(),
-        mdx(),
-        partytown({
-            // Adds dataLayer.push as a forwarding-event.
-            config: {
-                forward: ["dataLayer.push"],
-            },
-        }),
-    ],
     markdown: {
         remarkPlugins: [
             [remarkToc, { heading: "目次" }],
@@ -51,6 +35,22 @@ export default defineConfig({
         },
         extendDefaultPlugins: true,
     },
+    integrations: [
+        tailwind({
+            config: {
+                applyBaseStyles: false,
+            },
+        }),
+        react(),
+        sitemap(),
+        mdx(),
+        partytown({
+            // Adds dataLayer.push as a forwarding-event.
+            config: {
+                forward: ["dataLayer.push"],
+            },
+        }),
+    ],
     // vite: {
     //     optimizeDeps: {
     //         exclude: ["@resvg/resvg-js"],
