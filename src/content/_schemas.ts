@@ -14,12 +14,12 @@ export const blogSchema = z
     .strict();
 export type BlogFrontmatter = z.infer<typeof blogSchema>;
 
-export const aboutSchema = z
-    .object({
-        type: z.string(),
-        date: z.date(),
-        lastmod: z.date(),
-        // slug: z.string(),
-    })
-    .strict();
-export type AboutFrontmatter = z.infer<typeof aboutSchema>;
+// export const aboutSchema = z
+//     .object({
+//         type: z.string(),
+//         date: z.date(),
+//         lastmod: z.date(),
+//         // slug: z.string(),
+//     })
+//     .strict();
+// export type AboutFrontmatter = z.infer<typeof aboutSchema>;
