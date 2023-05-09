@@ -1,10 +1,10 @@
 ---
 title: サイコロを作りたい（3）ダークモード対応
 description: サイコロシーンの背景やマテリアルのダークモード対応を実装します。
-draft: true
+draft: false
 featured: false
-date: 2023-05-09T04:21:15.892Z
-lastmod: 2023-05-09T05:42:49.162Z
+date: 2023-05-09T05:46:15.051Z
+lastmod: 2023-05-09T05:46:18.614Z
 tags:
     - JavaScript
     - React-three-fiber
