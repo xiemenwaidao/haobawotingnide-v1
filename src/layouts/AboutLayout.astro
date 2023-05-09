@@ -3,14 +3,8 @@ import Breadcrumbs from "@components/Breadcrumbs.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Layout from "@layouts/Layout.astro";
-import { getCollection } from "astro:content";
 import { SITE } from "@config";
 import MyGL from "@components/GL/MyGL";
-
-// 本当はgetEntryBySlug()で取得したい
-const about = await getCollection("about");
-
-const { Content } = await about[0].render();
 ---
 
 <Layout title={`About | ${SITE.title}`}>
@@ -22,7 +16,7 @@ const { Content } = await about[0].render();
             <div class="h-96">
                 <MyGL client:only />
             </div>
-            <Content />
+            <slot />
         </section>
     </main>
     <Footer />

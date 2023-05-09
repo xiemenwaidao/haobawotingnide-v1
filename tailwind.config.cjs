@@ -31,7 +31,7 @@ module.exports = {
                     base: withOpacity("--color-text-base"),
                     accent: withOpacity("--color-accent"),
                     inverted: withOpacity("--color-fill"),
-                    pre: '#eaedf3',
+                    pre: "#eaedf3",
                 },
             },
             backgroundColor: {
@@ -67,36 +67,55 @@ module.exports = {
                 transparent: "transparent",
             },
             fontFamily: {
-                noto: ['Noto Sans JP', 'sans-serif'],
-                zh: ['ZCOOL XiaoWei', 'sans-serif'],
+                noto: ["Noto Sans JP", "sans-serif"],
+                zh: ["ZCOOL XiaoWei", "sans-serif"],
             },
             textUnderlineOffset: {
-                5: '5px',
+                5: "5px",
             },
             boxShadow: {
-                'DEFAULT': '0 1px 3px 0 rgb(var(--color-shadow)), 0 1px 2px -1px rgb(var(--color-shadow))',
+                DEFAULT:
+                    "0 1px 3px 0 rgb(var(--color-shadow)), 0 1px 2px -1px rgb(var(--color-shadow))",
             },
             // https://tail-animista.vercel.app/play/text/focus-in/text-focus-in
             animation: {
-                "text-focus-in": "text-focus-in 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both",
-                "marquee": 'marquee 15s linear infinite;'
+                "text-focus-in":
+                    "text-focus-in 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both",
+                marquee: "marquee 15s linear infinite;",
             },
             keyframes: {
                 "text-focus-in": {
                     "0%": {
                         filter: "blur(12px)",
-                        opacity: "0"
+                        opacity: "0",
                     },
                     to: {
                         filter: "blur(0)",
-                        opacity: "1"
-                    }
+                        opacity: "1",
+                    },
                 },
-                "marquee": {
-                    from: { transform: "translateX(0)"},
-                    to: { transform: "translateX(-100%)"}
-                }
-            }
+                marquee: {
+                    from: { transform: "translateX(0)" },
+                    to: { transform: "translateX(-100%)" },
+                },
+            },
+
+            typography: {
+                DEFAULT: {
+                    css: {
+                        // marker系
+                        "ul > li::marker": {
+                            color: "rgb(var(--color-accent))",
+                        },
+                        "ol > li::marker": {
+                            color: "rgb(var(--color-accent))",
+                        },
+                        "summary::marker": {
+                            color: "rgb(var(--color-accent))",
+                        },
+                    },
+                },
+            },
         },
     },
     plugins: [require("@tailwindcss/typography")],
