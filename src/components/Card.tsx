@@ -1,4 +1,3 @@
-import type { Blog } from "types/microcms";
 import Datetime from "./Datetime";
 import React from "react";
 import type { BlogFrontmatter } from "@content/_schemas";
@@ -16,15 +15,15 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
         <li className="my-6">
             <a
                 href={href}
-                className="inline-block w-full text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+                className="inline-block w-fit text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
                 title={title}
             >
                 {secHeading ? (
-                    <h2 className="text-lg font-medium decoration-dashed hover:underline max-sm:truncate">
+                    <h2 className="w-fit text-lg font-medium decoration-dashed hover:underline max-sm:truncate">
                         {title}
                     </h2>
                 ) : (
-                    <h3 className="text-lg font-medium decoration-dashed hover:underline max-sm:truncate">
+                    <h3 className="w-fit text-lg font-medium decoration-dashed hover:underline max-sm:truncate">
                         {title}
                     </h3>
                 )}
