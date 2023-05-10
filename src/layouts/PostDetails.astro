@@ -13,7 +13,7 @@ export interface Props {
 
 const { post } = Astro.props;
 
-const { title, description, date, tags } = post.data;
+const { title, description, lastmod, date, tags } = post.data;
 
 const { Content } = await post.render();
 
@@ -36,7 +36,12 @@ const ogUrl = new URL(`/og/${slugify(post.data)}.png`, Astro.url.origin).href;
     </div>
     <main id="main-content">
         <h1 class="post-title">{title}</h1>
-        <Datetime datetime={date} size="lg" className="my-2" />
+        <Datetime
+            datetime={date}
+            modifiedtime={lastmod}
+            size="lg"
+            className="my-2"
+        />
         <article
             id="article"
             role="article"

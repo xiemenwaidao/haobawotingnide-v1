@@ -73,3 +73,19 @@ export const toggleDisplayDraft = ({
 export const getRandomSign = () => {
     return Math.random() < 0.5 ? -1 : 1;
 };
+
+export const getFormatDatetime = (datetime: string | Date) => {
+    const pubdate = new Date(datetime);
+    const date = new Intl.DateTimeFormat("ja-JP", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    }).format(pubdate);
+    const time = new Intl.DateTimeFormat("ja-JP", {
+        hour: "2-digit",
+        minute: "2-digit",
+        timeZone: "Asia/Tokyo",
+    }).format(pubdate);
+
+    return { date, time };
+};
