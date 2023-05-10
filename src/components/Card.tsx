@@ -9,7 +9,7 @@ export interface Props {
 }
 
 export default function Card({ href, frontmatter, secHeading = true }: Props) {
-    const { title, date, description } = frontmatter;
+    const { title, date, lastmod, description } = frontmatter;
 
     return (
         <li className="my-6">
@@ -19,16 +19,16 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
                 title={title}
             >
                 {secHeading ? (
-                    <h2 className="w-fit text-lg font-medium decoration-dashed hover:underline max-sm:truncate">
+                    <h2 className="w-fit text-lg font-medium decoration-dashed hover:underline ">
                         {title}
                     </h2>
                 ) : (
-                    <h3 className="w-fit text-lg font-medium decoration-dashed hover:underline max-sm:truncate">
+                    <h3 className="w-fit text-lg font-medium decoration-dashed hover:underline ">
                         {title}
                     </h3>
                 )}
             </a>
-            <Datetime datetime={date} />
+            <Datetime datetime={date} modifiedtime={lastmod} />
             <p>{description}</p>
         </li>
     );
