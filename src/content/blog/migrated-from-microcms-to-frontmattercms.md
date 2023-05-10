@@ -1,10 +1,10 @@
 ---
 title: microCMSからFrontMatterCMSに移行しました
-description: 移行経緯などを説明してます。
+description: 移行経緯や移行先の紹介などを書きました。結論は移行を見据えたCMS選定が大事ってコト!?
 draft: false
 featured: false
 date: 2023-05-06T07:37:50.239Z
-lastmod: 2023-05-09T14:13:26.602Z
+lastmod: 2023-05-10T13:03:58.081Z
 tags:
     - ChatGPT
     - Front-Matter-CMS
