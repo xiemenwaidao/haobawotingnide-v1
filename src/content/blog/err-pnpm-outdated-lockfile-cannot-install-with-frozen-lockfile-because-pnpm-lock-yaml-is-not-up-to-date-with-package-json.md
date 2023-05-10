@@ -1,10 +1,10 @@
 ---
-title: ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with package.json
-description: Vercelデプロイ時のエラーの紹介。
+title: ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with 〜エラー
+description: Vercelデプロイ時にエラーに遭遇したので備忘録として残しておきます。
 draft: false
 featured: false
 date: 2023-04-10T16:20:00.000Z
-lastmod: 2023-05-06T07:15:31.567Z
+lastmod: 2023-05-10T12:56:04.661Z
 tags:
     - Vercel
 postSlug: err-pnpm-outdated-lockfile-cannot-install-with-frozen-lockfile-because-pnpm-lock-yaml-is-not-up-to-date-with-package-json

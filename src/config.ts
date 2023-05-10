@@ -3,7 +3,7 @@ import type { Site, SocialObjects } from "./types/common";
 export const SITE: Site = {
     website: "https://www.haobawotingnide.xyz/",
     author: "Menxie Lijiao",
-    desc: "my blog",
+    desc: "日々の開発記録 - フロントエンドや3Dの話題を共有するブログ。開発情報やノウハウ、新しい技術について発信しています。",
     title: "HAOBAWOTINGNIDE",
     ogImage: "ogImage.png",
     lightAndDarkMode: true,
