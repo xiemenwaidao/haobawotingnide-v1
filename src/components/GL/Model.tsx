@@ -1,13 +1,12 @@
 import { useThrottle } from "@hooks/useThrottle";
 import type { BoxProps, Quad, Triplet } from "@react-three/cannon";
-import { useBox, usePointToPointConstraint } from "@react-three/cannon";
+import { useBox } from "@react-three/cannon";
 import { useGLTF } from "@react-three/drei";
 import { lightParams, darkParams } from "@utils/const";
-import { getRandomSign } from "@utils/helper";
 import React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useCubeStore } from "stores/useGLStore";
-import { Box3, Color, type Mesh, Vector3 } from "three";
+import { Box3, Color, Vector3 } from "three";
 import type { Group } from "three";
 import type { GLTF } from "three-stdlib";
 
