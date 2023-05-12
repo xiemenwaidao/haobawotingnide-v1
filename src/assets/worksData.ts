@@ -12,7 +12,7 @@ const worksData: Work[] = [
         description:
             "WebGL School 2021の課題で作ったものです。Boxを使ってなんか作れという課題だったような。。。",
         date: "2021/5",
-        href: "https://menxielijiao.github.io/webglschool2021_three001/",
+        href: "https://xiemenwaidao.github.io/webglschool2021_three001/",
         tags: ["Three.js", "Vue.js", "gsap"],
     },
     {
@@ -20,7 +20,7 @@ const worksData: Work[] = [
         description:
             "WebGL School 2021の課題で作ったものです。扇風機を作ろうという課題でした。",
         date: "2021/6",
-        href: "https://menxielijiao.github.io/Fan/",
+        href: "https://xiemenwaidao.github.io/Fan/",
         tags: ["Three.js", "Vue.js", "gsap"],
     },
     {
@@ -28,7 +28,7 @@ const worksData: Work[] = [
         description:
             "WebGL School 2021の課題で作ったものです。地球という課題だったような。。。土星が美しい。。。",
         date: "2021/6",
-        href: "https://menxielijiao.github.io/solarSystem/",
+        href: "https://xiemenwaidao.github.io/solarSystem/",
         tags: ["Three.js", "Vue.js"],
     },
     {
@@ -36,7 +36,7 @@ const worksData: Work[] = [
         description:
             "ThreeJsJourneyを受講後に作成。bakeが難しかった。この頃からTypeScriptを使い始める。Blenderも初めて使用した。",
         date: "2021/11",
-        href: "https://lowpoly-room.vercel.app/",
+        href: "https://blender-lowpoly-room.vercel.app/",
         tags: ["Three.js", "Blender"],
     },
     {
