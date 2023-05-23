@@ -1,10 +1,10 @@
 ---
 title: 【ERROR ⇨ Babylon.js】undfinedimportMesh has failed JSON PARSE
 description: Babylon.jsで遭遇したエラーの備忘録
-draft: true
+draft: false
 featured: false
-date: 2023-05-23T10:41:28.892Z
-lastmod: 2023-05-23T11:28:49.573Z
+date: 2023-05-23T11:34:05.243Z
+lastmod: 2023-05-23T11:34:09.695Z
 tags:
     - BabylonJs
     - Vite
