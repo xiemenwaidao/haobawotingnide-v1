@@ -1,10 +1,10 @@
 ---
-title: vscodeのgit moji設定
+title: vscodeのgit moji設定（日本語化）
 description: vscodeからコミットする際に絵文字をいい感じに入れたくてgitmojiを導入してみました。
 draft: false
 featured: false
 date: 2023-05-29T04:56:14.665Z
-lastmod: 2023-05-29T04:56:18.315Z
+lastmod: 2023-05-29T05:18:26.072Z
 tags:
     - VSCode
     - git
