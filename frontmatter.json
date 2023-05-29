@@ -104,6 +104,7 @@
   ],
   "frontMatter.taxonomy.tags": [
     "AstroJs",
+    "BabylonJs",
     "Blender",
     "CannonJs",
     "ChatGPT",
@@ -117,6 +118,7 @@
     "Tool-Manager",
     "VSCode",
     "Vercel",
+    "Vite",
     "VueJs",
     "WordPress",
     "Zustand",
