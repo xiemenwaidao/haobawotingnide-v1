@@ -115,11 +115,13 @@
     "ReactJs",
     "ThreeJs",
     "Tool-Manager",
+    "VSCode",
     "Vercel",
     "VueJs",
     "WordPress",
     "Zustand",
     "chrome-extension",
+    "git",
     "microCMS"
   ],
   "frontMatter.taxonomy.categories": [],
