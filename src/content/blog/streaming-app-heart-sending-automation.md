@@ -1,10 +1,10 @@
 ---
 title: 配信アプリのハート送信を自動化したい
 description: 配信アプリのハート送信機能の自動化について調査してみました。
-draft: false
+draft: true
 featured: false
 date: 2023-04-15T00:31:00.000Z
-lastmod: 2023-05-06T07:15:07.674Z
+lastmod: 2023-05-30T05:15:14.990Z
 tags:
     - JavaScript
 postSlug: streaming-app-heart-sending-automation
