@@ -111,11 +111,15 @@
     "Front-Matter-CMS",
     "JavaScript",
     "M1Mac",
+    "NextJs",
     "NodeJs",
+    "Prisma",
     "React-three-fiber",
     "ReactJs",
+    "T3Stack",
     "ThreeJs",
     "Tool-Manager",
+    "TypeScript",
     "VSCode",
     "Vercel",
     "Vite",
@@ -124,7 +128,8 @@
     "Zustand",
     "chrome-extension",
     "git",
-    "microCMS"
+    "microCMS",
+    "tRPC"
   ],
   "frontMatter.taxonomy.categories": [],
   "frontMatter.content.snippets": {
