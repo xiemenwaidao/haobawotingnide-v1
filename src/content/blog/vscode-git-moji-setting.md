@@ -4,7 +4,7 @@ description: vscodeからコミットする際に絵文字をいい感じに入�
 draft: false
 featured: false
 date: 2023-05-29T04:56:14.665Z
-lastmod: 2023-05-29T04:56:18.315Z
+lastmod: 2023-06-13T03:25:57.953Z
 tags:
     - VSCode
     - git
@@ -14,6 +14,10 @@ postSlug: vscode-git-moji-setting
 <img src="/assets/img/posts/gitemoji_website_top.png" title="gitemojiのサイトトップ" alt="gitemojiのサイトトップ" width="1023" height="512" >
 
 ## 目次
+
+## 追記（23/6/13）
+
+日本語翻訳差分のPRを出したところ、無事マージされました。これで設定をいじらなくてもデフォルトで日本語の絵文字の説明が表示されるようになりました！初めてのPRで緊張しましたが、無事マージされてよかったです。他の日本人の方にPRページにて翻訳等のご指摘もいただき、とても勉強になりました。ありがとうございました！
 
 ## 経緯
 
