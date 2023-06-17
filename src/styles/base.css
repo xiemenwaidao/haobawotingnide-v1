@@ -86,7 +86,7 @@
         prose-code:before:!content-[''] prose-code:after:!content-['']
         prose-pre:!bg-slate-700 prose-pre:!text-skin-pre prose-ol:!text-skin-base
         prose-ul:overflow-x-clip prose-ul:!text-skin-base
-        prose-table:text-skin-base prose-th:border
+        prose-table:break-all prose-table:text-skin-base prose-th:border
         prose-th:border-skin-line prose-td:border
         prose-td:border-skin-line prose-img:mx-auto
         prose-img:!mb-2 prose-img:!mt-2 prose-img:inline prose-img:w-full prose-img:border-2
