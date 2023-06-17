@@ -4,7 +4,7 @@ description: 検索窓付きのマップをサイトに導入したくてGoogle 
 draft: false
 featured: false
 date: 2023-06-17T07:16:35.983Z
-lastmod: 2023-06-17T07:16:37.976Z
+lastmod: 2023-06-17T21:10:41.762Z
 tags:
     - googlemap
     - JavaScript
@@ -51,9 +51,9 @@ Autocomplete + Place Details - セッション単位+：$17&#x2F;1000リクエ�
 指定できるフィールドの一覧は[こちら](https://developers.google.com/maps/documentation/javascript/reference/places-service?hl=ja#PlaceResult)から閲覧できるようです。<br/>
 しかし、フィールド指定の課金についての詳細は記載していないので再度調べてみると、[Places API の使用量と請求額](https://developers.google.com/maps/documentation/places/web-service/usage-and-billing?hl=ja#autocomplete)を説明しているページの[SKU: Atmosphere Data](https://developers.google.com/maps/documentation/places/web-service/usage-and-billing?hl=ja#atmosphere-data)セクションに[フィールド（Place Details）](https://developers.google.com/maps/documentation/javascript/places?hl=ja#place_details_fields)というリンクがありました。情報のたらい回しすぎて目が回ります。
 
-| Basic                                                                                                                                                                                                           | Contact                                                                    | Atmosphere                                       |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------ |
-| address_component、adr_address、business_status、 formatted_address、geometry、icon、 icon_mask_base_uri、icon_background_color、name、 、 photo、place_id、plus_code、type、url、utc_offset_minutes、 vicinity | formatted_phone_number、international_phone_number、opening_hours、website | price_level、rating、reviews、user_ratings_total |
+| Basic                                                                                                                                                                                                    | Contact                                                                    | Atmosphere                                       |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------ |
+| address_component、adr_address、business_status、formatted_address、geometry、icon、icon_mask_base_uri、icon_background_color、name、photo、place_id、plus_code、type、url、utc_offset_minutes、vicinity | formatted_phone_number、international_phone_number、opening_hours、website | price_level、rating、reviews、user_ratings_total |
 
 上記がフィールドで指定できるものの振り分けです。
 
